@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:jaxws="http://cxf.apache.org/jaxws" 
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+    <bean id="serverPasswordCallback"
+          class="com.tav.service.base.security.ServerPasswordCallback"/>
+    <!-- soap -->
+    
+    <!-- rest -->
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+        
+    
+    
+    <!--    <jaxrs:server id="common_processingRsServiceRest"
+                  address="/common_processingRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="common_processingRsServiceClass"
+                  class="com.tav.service.rest.common_processingRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>-->
+    
+    <jaxrs:server id="attachmentRsServiceRest"
+                  address="/attachmentRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="attachmentRsServiceClass"
+                  class="com.tav.service.rest.AttachmentRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="chatBoxRsServiceRest"
+                  address="/chatBoxRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="chatBoxRsServiceClass"
+                  class="com.tav.service.rest.ChatBoxRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server> 
+    
+    <jaxrs:server id="comnentRsServiceRest"
+                  address="/comnentRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="comnentRsServiceClass"
+                  class="com.tav.service.rest.ComnentRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="groupRsServiceRest"
+                  address="/groupRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="groupRsServiceClass"
+                  class="com.tav.service.rest.GroupRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="groupAdminRsServiceRest"
+                  address="/groupAdminRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="groupAdminRsServiceClass"
+                  class="com.tav.service.rest.GroupAdminRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="groupMemberRsServiceRest"
+                  address="/groupMemberRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="groupMemberRsServiceClass"
+                  class="com.tav.service.rest.GroupMemberRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="messageRsServiceRest"
+                  address="/messageRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="messageRsServiceClass"
+                  class="com.tav.service.rest.MessageRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    
+    <jaxrs:server id="messNotifyRsServiceRest"
+                  address="/messNotifyRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="messNotifyRsServiceClass"
+                  class="com.tav.service.rest.MessNotifyRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="notifyRsServiceRest"
+                  address="/notifyRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="notifyRsServiceClass"
+                  class="com.tav.service.rest.NotifyRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="postRsServiceRest"
+                  address="/postRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="postRsServiceClass"
+                  class="com.tav.service.rest.PostRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    <jaxrs:server id="userRsServiceRest"
+                  address="/userRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="userRsServiceClass"
+                  class="com.tav.service.rest.UserRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="userLikeCommentRsServiceRest"
+                  address="/userLikeCommentRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="userLikeCommentRsServiceClass"
+                  class="com.tav.service.rest.UserLikeCommentRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
+    <jaxrs:server id="userLikePostRsServiceRest"
+                  address="/userLikePostRsServiceRest">
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean id="userLikePostRsServiceClass"
+                              class="com.tav.service.rest.UserLikePostRsServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+</beans>

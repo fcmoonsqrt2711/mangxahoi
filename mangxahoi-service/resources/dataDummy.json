@@ -1,0 +1,18 @@
+{
+    "data": [{
+            "dataType": "FIXFIRE",
+            "objectName": "Xe cuu hoa",
+            "latitude": "21.0271653",
+            "longitude": "105.826527"
+        }, {
+            "dataType": "FIXFIRE",
+            "objectName": "Xe cuu thuong",
+            "latitude": "21.0231653",
+            "longitude": "105.806527"
+        }, {
+            "dataType": "GIAOLO",
+            "objectName": "Nga tu So",
+            "latitude": "21.0294285",
+            "longitude": "105.827385"
+        }]
+}

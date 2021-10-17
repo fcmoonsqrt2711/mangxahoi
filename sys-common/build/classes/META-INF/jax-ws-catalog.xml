@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://10.58.71.179:8787/vsa-service/UsersWS?wsdl" uri="wsdl/10.58.71.179_8787/vsa-service/UsersWS.wsdl"/>
+</catalog>
