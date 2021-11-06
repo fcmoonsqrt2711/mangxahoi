@@ -43,7 +43,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long>{
 		sqlCommand.append("tbl.address as address, ");
 		sqlCommand.append("tbl.avatarPath as avatarPath ");
 
-		sqlCommand.append(" FROM User tbl ");
+		sqlCommand.append(" FROM User_mxh tbl ");
 
 		sqlCommand.append(" WHERE 1=1 ");
 	//String
@@ -80,7 +80,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long>{
         StringBuilder sqlCommand = new StringBuilder();
         sqlCommand.append(" SELECT ");
         sqlCommand.append(" COUNT(1)");
-        sqlCommand.append(" FROM  User tbl ");
+        sqlCommand.append(" FROM  User_mxh tbl ");
         sqlCommand.append(" WHERE 1=1 ");
 	//String
  	if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
@@ -107,7 +107,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long>{
 		sqlCommand.append("tbl.address as address, ");
 		sqlCommand.append("tbl.avatarPath as avatarPath ");
 
-		sqlCommand.append(" FROM User tbl ");
+		sqlCommand.append(" FROM User_mxh tbl ");
 		sqlCommand.append(" WHERE tbl.gid = :gid");
 		Query query = getSession().createSQLQuery(sqlCommand.toString())
 			.addScalar("gid", LongType.INSTANCE)

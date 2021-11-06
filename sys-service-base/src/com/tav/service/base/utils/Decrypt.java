@@ -17,12 +17,13 @@ public class Decrypt {
 	     	StandardPBEStringEncryptor  textEncryptor = new StandardPBEStringEncryptor ();
 	        textEncryptor.setPassword("123456a@");
 	        System.err.println("=========DYCRIPT=========");
-	        System.err.println(textEncryptor.encrypt("jdbc:postgresql://127.0.0.1:5432/vnmacee"));
+	        System.err.println(textEncryptor.encrypt("jdbc:postgresql://127.0.0.1:5432/mangxahoi"));
 	        
-                System.err.println(textEncryptor.encrypt("root"));
-	        
-                System.err.println(textEncryptor.decrypt("vb05tA5sZ9vPekhPWz3x0NqRpB6ZHf+0qQ8GX+X5tuOTnY/VxXBiw/JsKZtlCo+d"));
-	        System.err.println(textEncryptor.decrypt("s6HiRLmQY9d+OZ8XfAuG7MNdJYZWDlDRGFSna3nd5bo7sIO0kg9ATzTIRzP/dQ1ftS7grfMI+v0="));
+                System.err.println(textEncryptor.encrypt("postgres"));
+	        System.err.println(textEncryptor.encrypt("root"));
+                
+//                System.err.println(textEncryptor.decrypt("vb05tA5sZ9vPekhPWz3x0NqRpB6ZHf+0qQ8GX+X5tuOTnY/VxXBiw/JsKZtlCo+d"));
+//	        System.err.println(textEncryptor.decrypt("s6HiRLmQY9d+OZ8XfAuG7MNdJYZWDlDRGFSna3nd5bo7sIO0kg9ATzTIRzP/dQ1ftS7grfMI+v0="));
 	        
 	    }
 
