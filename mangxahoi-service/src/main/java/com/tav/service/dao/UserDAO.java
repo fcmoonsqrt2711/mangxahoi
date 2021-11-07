@@ -54,7 +54,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository("userDAO")
 public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
-
+    
     public List<UserDTO> getAll(SearchCommonFinalDTO searchDTO, Integer offset, Integer limit) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         StringBuilder sqlCommand = new StringBuilder();
@@ -69,26 +69,26 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
         sqlCommand.append("tbl.avatarPath as avatarPath ");
-
+        
         sqlCommand.append(" FROM User_mxh tbl ");
-
+        
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             sqlCommand.append(" and (   ");
             sqlCommand.append(" )   ");
         }
-
+        
         if (!StringUtil.isEmpty(searchDTO.getString20())) { // username
             sqlCommand.append(" and ( tbl.userName =  :userName  ");
             sqlCommand.append(" )   ");
         }
-
+        
         if (!StringUtil.isEmpty(searchDTO.getString19())) { // pass
             sqlCommand.append(" and (  tbl.passWord =  :passWord ");
             sqlCommand.append(" )   ");
         }
-
+        
         sqlCommand.append(" ORDER BY tbl.gid ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
@@ -109,16 +109,16 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
         }
-
+        
         if (!StringUtil.isEmpty(searchDTO.getString20())) {
             query.setParameter("userName", searchDTO.getString20());
         }
         if (!StringUtil.isEmpty(searchDTO.getString19())) {
-            query.setParameter("stringKeyWord", searchDTO.getString19());
+            query.setParameter("passWord", searchDTO.getString19());
         }
         return query.list();
     }
-
+    
     public Integer getCount(SearchCommonFinalDTO searchDTO) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         StringBuilder sqlCommand = new StringBuilder();
@@ -152,7 +152,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
         sqlCommand.append("tbl.avatarPath as avatarPath ");
-
+        
         sqlCommand.append(" FROM User_mxh tbl ");
         sqlCommand.append(" WHERE tbl.gid = :gid");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
@@ -197,53 +197,65 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
     @Transactional
     public ServiceResult updateObj(UserDTO dto) {
         ServiceResult result = new ServiceResult();
-        UserBO bo = dto.toModel();
-        try {
-            getSession().merge(bo);
-        } catch (ConstraintViolationException e) {
-            log.error(e);
-            result.setError(e.getMessage());
-            result.setErrorType(ConstraintViolationException.class.getSimpleName());
-            result.setConstraintName(e.getConstraintName());
-        } catch (JDBCConnectionException e) {
-            log.error(e);
-            result.setError(e.getMessage());
-            result.setErrorType(JDBCConnectionException.class.getSimpleName());
-        } catch (HibernateException e) {
-            log.error(e);
-            result.setError(e.getMessage());
+        if (dto.getUserName() != null) {
+            SearchCommonFinalDTO searchDTO = new SearchCommonFinalDTO();
+            searchDTO.setString20(dto.getUserName());
+            List<UserDTO> lst = getAll(searchDTO, 0, 0);
+            
+            UserDTO temp = lst.get(lst.size() - 1);
+            
+            temp.setPassWord(dto.getPassWord());
+            
+            UserBO bo = temp.toModel();
+            result.setId(bo.getGid());
+            try {
+                getSession().merge(bo);
+            } catch (ConstraintViolationException e) {
+                log.error(e);
+                result.setError(e.getMessage());
+                result.setErrorType(ConstraintViolationException.class.getSimpleName());
+                result.setConstraintName(e.getConstraintName());
+            } catch (JDBCConnectionException e) {
+                log.error(e);
+                result.setError(e.getMessage());
+                result.setErrorType(JDBCConnectionException.class.getSimpleName());
+            } catch (HibernateException e) {
+                log.error(e);
+                result.setError(e.getMessage());
+            }
         }
         return result;
     }
-
+    
     private static BufferedImage createRGBImage(byte[] bytes, int width, int height) {
         DataBufferByte buffer = new DataBufferByte(bytes, bytes.length);
         ColorModel cm = new ComponentColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB), new int[]{8, 8, 8}, false, false, Transparency.OPAQUE, DataBuffer.TYPE_BYTE);
         return new BufferedImage(cm, Raster.createInterleavedRaster(buffer, width, height, width * 3, 3, new int[]{0, 1, 2}, null), false, null);
     }
-
+    
     @Transactional
     public UserBO addDTO(UserDTO dto) throws FileNotFoundException, IOException {
-
+        
         ServiceResult result = new ServiceResult();
         Session session1 = getSession();
         UserBO BO = new UserBO();
         try {
             BO = (UserBO) session1.merge(dto.toModel());
-
-            BufferedImage bImage = ImageIO.read(new File(dto.getAvatarPath()));
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ImageIO.write(bImage, "jpg", bos);
-            dto.setDataImg(bos.toByteArray());
-
-            ByteArrayInputStream bis = new ByteArrayInputStream(dto.getDataImg());
-            BufferedImage bImage2 = ImageIO.read(bis);
+            if (dto.getAvatarPath() != null) {
+                BufferedImage bImage = ImageIO.read(new File(dto.getAvatarPath()));
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ImageIO.write(bImage, "jpg", bos);
+                dto.setDataImg(bos.toByteArray());
+                
+                ByteArrayInputStream bis = new ByteArrayInputStream(dto.getDataImg());
+                BufferedImage bImage2 = ImageIO.read(bis);
 
 //            System.out.println("33333333333" + BO.getGid().toString());
-            ImageIO.write(bImage2, "jpg", new File("avatar" + BO.getGid().toString() + ".jpg"));
-
-            System.out.println("image created");
-
+                ImageIO.write(bImage2, "jpg", new File("avatar" + BO.getGid().toString() + ".jpg"));
+                
+                System.out.println("image created");
+            }
+            
         } catch (JDBCConnectionException e) {
             log.error(e);
             result.setError(e.getMessage());
@@ -259,6 +271,6 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         }
         return BO;
     }
-
+    
     
 }

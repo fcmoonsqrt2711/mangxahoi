@@ -90,5 +90,18 @@ public class UserRsServiceImpl implements UserRsService {
         }
         return Response.ok(result).build();
     }
+    
+    @Override
+    public Response send_mail_change_pw(UserDTO userDTO) {
+        ServiceResult result = null;
+        try {
+            result = userBusinessImpl.send_mail_change_pw(userDTO);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Response.ok(result).build();
+    }
 
 }

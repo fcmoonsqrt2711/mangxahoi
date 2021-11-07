@@ -64,19 +64,19 @@ public class UserBusinessImpl extends
         List<UserDTO> lstDTO = userDAO.getAll(searchDTOTmp, 0, 0);
         for (UserDTO i : lstDTO) {
             if (i.getUserName().equals(userDTO.getUserName())) {
-                serviceResult.setId(-1L);
+                serviceResult.setId(-1L); // da ton tai usserName
                 return serviceResult;
             }
         }
-        serviceResult.setId(1L);
+        serviceResult.setId(1L); // chua ton tai user
         return serviceResult;
     }
 
     //update
     public ServiceResult updateObj(UserDTO userDTO) throws IOException, FileNotFoundException, GeneralSecurityException {
-        ServiceResult result;
-        UserBO bo = userDAO.addDTO(userDTO);
-        result = new ServiceResult();
+
+        ServiceResult result = userDAO.updateObj(userDTO);
+        
         return result;
     }
 
@@ -176,5 +176,84 @@ public class UserBusinessImpl extends
         }
         return result;
     }
+    
+    public ServiceResult send_mail_change_pw(UserDTO userDTO) throws GeneralSecurityException, IOException {
+
+        ServiceResult result = new ServiceResult();
+        boolean check = false;
+        String code = getRandom();
+
+        int c = Integer.parseInt(code);
+        result = checkUserName(userDTO);
+
+        if (result.getId() != null && result.getId() == 1L) { //==1 chua ton tai user
+            result.setId(-3L);// chua ton tai user -> ko doi dk mat khau
+            return result; // trung user
+        } else if (userDTO.getEmail() != null && userDTO.getEmail() != "") {
+            String toEmail = userDTO.getEmail();
+//        System.out.println("aaaaaaaa" + userDTO.getEmail());
+
+            String fromEmail = "nguyenhonghue18112000@gmail.com";
+            String password = "Hue18112000";
+            MailSSLSocketFactory sf = new MailSSLSocketFactory();
+
+            sf.setTrustAllHosts(true);
+            try {
+
+                // your host email smtp server details
+                Properties pr = new Properties();
+
+                pr.put("mail.smtp.ssl.trust", "*");
+                pr.put("mail.smtp.ssl.socketFactory", sf);
+                pr.put("mail.smtp.host", "smtp.gmail.com");
+                pr.put("mail.smtp.socketFactory.port", "587");
+                pr.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+                pr.put("mail.smtp.auth", "true");
+                pr.put("mail.smtp.port", 587);
+                pr.setProperty("mail.smtp.starttls.enable", "true");
+
+                javax.mail.Session session = javax.mail.Session.getInstance(pr, new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(fromEmail, password);
+                    }
+                });
+
+                //set email message details
+                Message mess = new MimeMessage(session);
+
+                //set from email address
+                mess.setFrom(new InternetAddress(fromEmail));
+                //set to email address or destination email address
+                mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+
+                //set email subject
+                mess.setSubject("User Email Verification");
+
+                //set message text
+                mess.setText("Registered successfully.Please verify your account using this code: " + code);
+                //send the message
+                Transport.send(mess);
+                check = true;
+
+            } catch (Exception e) {
+                result.setError(e.getMessage());
+            }
+            try {
+                if (check == true) {
+                    if (result.getId() != null && result.getId() == -1L) { // da co userName trong DB
+//                        UserBO bo = userDAO.addDTO(userDTO);
+                        result.setId(Long.valueOf(c));
+                    }
+                } else {
+                    result.setId(-2L); // loi gui mail
+                }
+            } catch (Exception e) {
+                result.setError(e.getMessage());
+            }
+        }
+        return result;
+    }
+    
 
 }

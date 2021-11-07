@@ -4,17 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/UserBO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsServiceImpl.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/GroupAdminBO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserBusiness.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/web/WEB-INF/beans-service.xml</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/UserDTO.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/MessageDAO.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/SearchCommonFinalDTO.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/resources/config.properties</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsServiceImpl.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/web/META-INF/context.xml</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserDAO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/resources/datasources.properties</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/UserDTO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/SearchCommonFinalDTO.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/resources/environment.properties</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/PostDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/common/SendEmail.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsService.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>

@@ -56,4 +56,10 @@ public interface UserRsService {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response send_mail(UserDTO userDTO);
         
+	@POST
+	@Path("/checkusername_sendmail_change_pw/")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response send_mail_change_pw(UserDTO userDTO);
+        
 }
