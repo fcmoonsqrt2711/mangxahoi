@@ -11,130 +11,140 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "UserDTO")
 public class UserDTO extends BaseFWDTOImpl<UserBO> {
-	private Long gid;		//Khóa tự sinh
-	private String userName;		//
-	private String passWord;		//
-	private String fullName;		//
-	private Long gender;		//
-	private Date dateOfBirth;		//
-	private String dateOfBirthST;
-	private String phoneNumber;		//
-	private String email;		//
-	private String address;		//
-	private String avatarPath;		//
 
-	public Long getGid(){
-		return gid;
-	}
+    private Long gid;		//Khóa tự sinh
+    private String userName;		//
+    private String passWord;		//
+    private String fullName;		//
+    private Long gender;		//
+    private Date dateOfBirth;		//
+    private String dateOfBirthST;
+    private String phoneNumber;		//
+    private String email;		//
+    private String address;		//
+    private String avatarPath;		//
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    private byte[] dataImg;		//
 
-	public String getUserName(){
-		return userName;
-	}
+    public byte[] getDataImg() {
+        return dataImg;
+    }
 
-	public void setUserName(String userName){
-		this.userName = userName;
-	}
+    public void setDataImg(byte[] dataImg) {
+        this.dataImg = dataImg;
+    }
 
-	public String getPassWord(){
-		return passWord;
-	}
+    public Long getGid() {
+        return gid;
+    }
 
-	public void setPassWord(String passWord){
-		this.passWord = passWord;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	public String getFullName(){
-		return fullName;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setFullName(String fullName){
-		this.fullName = fullName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public Long getGender(){
-		return gender;
-	}
+    public String getPassWord() {
+        return passWord;
+    }
 
-	public void setGender(Long gender){
-		this.gender = gender;
-	}
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
 
-	public Date getDateOfBirth(){
-		return dateOfBirth;
-	}
+    public String getFullName() {
+        return fullName;
+    }
 
-	public void setDateOfBirth(Date dateOfBirth){
-		this.dateOfBirth = dateOfBirth;
-	}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-	public String getDateOfBirthST(){
-		return dateOfBirthST;
-	}
+    public Long getGender() {
+        return gender;
+    }
 
-	public void setDateOfBirthST(String dateOfBirthST){
-		this.dateOfBirthST = dateOfBirthST;
-	}
+    public void setGender(Long gender) {
+        this.gender = gender;
+    }
 
-	public String getPhoneNumber(){
-		return phoneNumber;
-	}
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	public void setPhoneNumber(String phoneNumber){
-		this.phoneNumber = phoneNumber;
-	}
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	public String getEmail(){
-		return email;
-	}
+    public String getDateOfBirthST() {
+        return dateOfBirthST;
+    }
 
-	public void setEmail(String email){
-		this.email = email;
-	}
+    public void setDateOfBirthST(String dateOfBirthST) {
+        this.dateOfBirthST = dateOfBirthST;
+    }
 
-	public String getAddress(){
-		return address;
-	}
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-	public void setAddress(String address){
-		this.address = address;
-	}
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	public String getAvatarPath(){
-		return avatarPath;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setAvatarPath(String avatarPath){
-		this.avatarPath = avatarPath;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getAddress() {
+        return address;
+    }
 
-	@Override
-	public UserBO toModel() {
-		UserBO userBO = new UserBO();
-		userBO.setGid(gid);
-		userBO.setUserName(userName);
-		userBO.setPassWord(passWord);
-		userBO.setFullName(fullName);
-		userBO.setGender(gender);
-		userBO.setDateOfBirth(dateOfBirth);
-		userBO.setPhoneNumber(phoneNumber);
-		userBO.setEmail(email);
-		userBO.setAddress(address);
-		userBO.setAvatarPath(avatarPath);
-		return userBO;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	@Override
-	public Long getFWModelId() {
-		return getGid();
-	}
+    public String getAvatarPath() {
+        return avatarPath;
+    }
 
-	@Override
-	public String catchName() {
-		return gid.toString();
-	}
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
+
+    @Override
+    public UserBO toModel() {
+        UserBO userBO = new UserBO();
+        userBO.setGid(gid);
+        userBO.setUserName(userName);
+        userBO.setPassWord(passWord);
+        userBO.setFullName(fullName);
+        userBO.setGender(gender);
+        userBO.setDateOfBirth(dateOfBirth);
+        userBO.setPhoneNumber(phoneNumber);
+        userBO.setEmail(email);
+        userBO.setAddress(address);
+        userBO.setAvatarPath(avatarPath);
+        return userBO;
+    }
+
+    @Override
+    public Long getFWModelId() {
+        return getGid();
+    }
+
+    @Override
+    public String catchName() {
+        return gid.toString();
+    }
 }

@@ -48,4 +48,12 @@ public interface UserRsService {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response addDTO(UserDTO userDTO);
+        
+        
+	@POST
+	@Path("/checkusername_sendmail/")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response send_mail(UserDTO userDTO);
+        
 }

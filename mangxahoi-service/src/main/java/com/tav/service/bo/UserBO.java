@@ -29,6 +29,9 @@ public class UserBO extends BaseFWModelImpl {
     private String email;		//
     private String address;		//
     private String avatarPath;		//
+    
+    
+    private byte[] dataImg;		//
 
     public UserBO() {
         setColId("gid");
@@ -134,6 +137,15 @@ public class UserBO extends BaseFWModelImpl {
         this.avatarPath = avatarPath;
     }
 
+    @Column(name = "dataImg", length = 500000)
+    public byte[] getDataImg() {
+        return dataImg;
+    }
+
+    public void setDataImg(byte[] dataImg) {
+        this.dataImg = dataImg;
+    }
+
     @Override
     public BaseFWDTOImpl toDTO() {
         UserDTO userDTO = new UserDTO();
@@ -147,6 +159,7 @@ public class UserBO extends BaseFWModelImpl {
         userDTO.setEmail(email);
         userDTO.setAddress(address);
         userDTO.setAvatarPath(avatarPath);
+        userDTO.setDataImg(dataImg);
         return userDTO;
     }
 }
