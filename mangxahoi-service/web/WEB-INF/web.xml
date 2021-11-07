@@ -7,7 +7,17 @@
             classpath:spring-beans.xml
         </param-value>
     </context-param>
-<!--    <filter>
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    
+    <!--    <filter>
         <filter-name>IpFilter</filter-name>
         <filter-class>com.viettel.erp.filter.IpFilter</filter-class>
     </filter>
@@ -19,7 +29,7 @@
         <filter-name>IpFilter</filter-name>
         <url-pattern>/erp-service/*</url-pattern>
     </filter-mapping>-->
-<!--    <context-param>
+    <!--    <context-param>
         <param-name>IgniteConfigurationFilePath</param-name>
         <param-value>
             config/default-config.xml
@@ -44,7 +54,7 @@
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
     <!-- filter request -->
-<!--    <filter>
+    <!--    <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>com.viettel.service.base.service.filter.AuthenticationFilter</filter-class>
     </filter>

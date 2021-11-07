@@ -124,7 +124,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         StringBuilder sqlCommand = new StringBuilder();
         sqlCommand.append(" SELECT ");
         sqlCommand.append(" COUNT(1)");
-        sqlCommand.append(" FROM  User tbl ");
+        sqlCommand.append(" FROM  User_mxh tbl ");
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
