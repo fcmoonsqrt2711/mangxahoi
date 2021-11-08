@@ -13,10 +13,14 @@
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/resources/config.properties</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsServiceImpl.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/web/META-INF/context.xml</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/ServiceResult.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/UserCommon.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserDAO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/resources/datasources.properties</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserBusinessImpl.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/MessagePoint.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/resources/environment.properties</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/common/DateUtil.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/PostDAO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsService.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/web/WEB-INF/web.xml</file>

@@ -19,6 +19,14 @@ public interface UserRsService {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAll(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
+        @POST
+	@Path("/getAll_BirthDay")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response getAll_BirthDay(SearchCommonFinalDTO searchDTO);
+
+        
+        
 	@POST
 	@Path("/getCount")
 	@Consumes({MediaType.APPLICATION_JSON})

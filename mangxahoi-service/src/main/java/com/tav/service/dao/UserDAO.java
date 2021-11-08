@@ -3,6 +3,7 @@ package com.tav.service.dao;
 import com.sun.mail.util.MailSSLSocketFactory;
 import com.tav.service.base.db.dao.BaseFWDAOImpl;
 import com.tav.service.bo.UserBO;
+import com.tav.service.common.DateUtil;
 import com.tav.service.dto.UserDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
@@ -46,6 +47,7 @@ import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.JDBCConnectionException;
 import org.hibernate.transform.Transformers;
+import org.hibernate.type.DateType;
 import org.hibernate.type.LongType;
 import org.hibernate.type.DoubleType;
 import org.hibernate.type.StringType;
@@ -54,7 +56,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository("userDAO")
 public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
-    
+
     public List<UserDTO> getAll(SearchCommonFinalDTO searchDTO, Integer offset, Integer limit) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         StringBuilder sqlCommand = new StringBuilder();
@@ -64,31 +66,37 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.passWord as passWord, ");
         sqlCommand.append("tbl.fullName as fullName, ");
         sqlCommand.append("tbl.gender as gender, ");
-        sqlCommand.append("to_char(tbl.dateOfBirth, 'DD/MM/YYYY') as dateOfBirthST, ");
+        sqlCommand.append("tbl.dateOfBirth as dateOfBirth, ");
+        sqlCommand.append("to_char(tbl.dateOfBirth, 'MM/DD/YYYY') as dateOfBirthST, ");
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
         sqlCommand.append("tbl.avatarPath as avatarPath ");
-        
+
         sqlCommand.append(" FROM User_mxh tbl ");
-        
+
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             sqlCommand.append(" and (   ");
             sqlCommand.append(" )   ");
         }
-        
+
         if (!StringUtil.isEmpty(searchDTO.getString20())) { // username
             sqlCommand.append(" and ( tbl.userName =  :userName  ");
             sqlCommand.append(" )   ");
         }
-        
+
         if (!StringUtil.isEmpty(searchDTO.getString19())) { // pass
             sqlCommand.append(" and (  tbl.passWord =  :passWord ");
             sqlCommand.append(" )   ");
         }
-        
+
+        if (!StringUtil.isEmpty(searchDTO.getString17())) { // birthDay
+            sqlCommand.append(" and ( ( to_char(tbl.dateOfBirth, 'DD/MM/YYYY') ) = :birthDay  ");
+            sqlCommand.append(" )   ");
+        }
+
         sqlCommand.append(" ORDER BY tbl.gid ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
@@ -96,6 +104,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 .addScalar("passWord", StringType.INSTANCE)
                 .addScalar("fullName", StringType.INSTANCE)
                 .addScalar("gender", LongType.INSTANCE)
+                .addScalar("dateOfBirth", DateType.INSTANCE)
                 .addScalar("dateOfBirthST", StringType.INSTANCE)
                 .addScalar("phoneNumber", StringType.INSTANCE)
                 .addScalar("email", StringType.INSTANCE)
@@ -109,16 +118,19 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
         }
-        
+
         if (!StringUtil.isEmpty(searchDTO.getString20())) {
             query.setParameter("userName", searchDTO.getString20());
         }
         if (!StringUtil.isEmpty(searchDTO.getString19())) {
             query.setParameter("passWord", searchDTO.getString19());
         }
+        if (!StringUtil.isEmpty(searchDTO.getString17())) {
+            query.setParameter("birthDay", searchDTO.getString17());
+        }
         return query.list();
     }
-    
+
     public Integer getCount(SearchCommonFinalDTO searchDTO) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         StringBuilder sqlCommand = new StringBuilder();
@@ -147,12 +159,13 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.passWord as passWord, ");
         sqlCommand.append("tbl.fullName as fullName, ");
         sqlCommand.append("tbl.gender as gender, ");
-        sqlCommand.append("to_char(tbl.dateOfBirth, 'DD/MM/YYYY') as dateOfBirthST, ");
+        sqlCommand.append("tbl.dateOfBirth as dateOfBirth, ");
+        sqlCommand.append("to_char(tbl.dateOfBirth, 'MM/DD/YYYY') as dateOfBirthST, ");
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
         sqlCommand.append("tbl.avatarPath as avatarPath ");
-        
+
         sqlCommand.append(" FROM User_mxh tbl ");
         sqlCommand.append(" WHERE tbl.gid = :gid");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
@@ -161,6 +174,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 .addScalar("passWord", StringType.INSTANCE)
                 .addScalar("fullName", StringType.INSTANCE)
                 .addScalar("gender", LongType.INSTANCE)
+                .addScalar("dateOfBirth", DateType.INSTANCE)
                 .addScalar("dateOfBirthST", StringType.INSTANCE)
                 .addScalar("phoneNumber", StringType.INSTANCE)
                 .addScalar("email", StringType.INSTANCE)
@@ -201,11 +215,11 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
             SearchCommonFinalDTO searchDTO = new SearchCommonFinalDTO();
             searchDTO.setString20(dto.getUserName());
             List<UserDTO> lst = getAll(searchDTO, 0, 0);
-            
+
             UserDTO temp = lst.get(lst.size() - 1);
-            
+
             temp.setPassWord(dto.getPassWord());
-            
+
             UserBO bo = temp.toModel();
             result.setId(bo.getGid());
             try {
@@ -226,16 +240,16 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         }
         return result;
     }
-    
+
     private static BufferedImage createRGBImage(byte[] bytes, int width, int height) {
         DataBufferByte buffer = new DataBufferByte(bytes, bytes.length);
         ColorModel cm = new ComponentColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB), new int[]{8, 8, 8}, false, false, Transparency.OPAQUE, DataBuffer.TYPE_BYTE);
         return new BufferedImage(cm, Raster.createInterleavedRaster(buffer, width, height, width * 3, 3, new int[]{0, 1, 2}, null), false, null);
     }
-    
+
     @Transactional
     public UserBO addDTO(UserDTO dto) throws FileNotFoundException, IOException {
-        
+
         ServiceResult result = new ServiceResult();
         Session session1 = getSession();
         UserBO BO = new UserBO();
@@ -246,16 +260,16 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 ImageIO.write(bImage, "jpg", bos);
                 dto.setDataImg(bos.toByteArray());
-                
+
                 ByteArrayInputStream bis = new ByteArrayInputStream(dto.getDataImg());
                 BufferedImage bImage2 = ImageIO.read(bis);
 
 //            System.out.println("33333333333" + BO.getGid().toString());
                 ImageIO.write(bImage2, "jpg", new File("avatar" + BO.getGid().toString() + ".jpg"));
-                
+
                 System.out.println("image created");
             }
-            
+
         } catch (JDBCConnectionException e) {
             log.error(e);
             result.setError(e.getMessage());
@@ -271,6 +285,5 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         }
         return BO;
     }
-    
-    
+
 }

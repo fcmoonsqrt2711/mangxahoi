@@ -5,6 +5,7 @@ import com.tav.service.dto.UserDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.ServiceResult;
+import com.tav.service.dto.UserCommon;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -102,6 +103,16 @@ public class UserRsServiceImpl implements UserRsService {
             Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Response.ok(result).build();
+    }
+    
+    @Override
+    public Response getAll_BirthDay(SearchCommonFinalDTO searchDTO) {
+        List<UserCommon> lst = userBusinessImpl.getAll_BirthDay(searchDTO);
+        if (lst == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } else {
+            return Response.ok(lst).build();
+        }
     }
 
 }

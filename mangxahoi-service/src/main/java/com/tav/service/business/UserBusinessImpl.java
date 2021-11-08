@@ -4,15 +4,20 @@ import com.sun.mail.util.MailSSLSocketFactory;
 import com.tav.service.base.db.business.BaseFWBusinessImpl;
 import com.tav.service.bo.UserBO;
 import com.tav.service.common.Constants;
+import com.tav.service.common.DateUtil;
 import com.tav.service.dao.UserDAO;
 import com.tav.service.dto.UserDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
+import com.tav.service.dto.UserCommon;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
 import java.util.Properties;
@@ -46,6 +51,34 @@ public class UserBusinessImpl extends
         return lstDTO;
     }
 
+    public List<UserCommon> getAll_BirthDay(SearchCommonFinalDTO searchDTOTmp) {
+        List<UserDTO> lstDTO = userDAO.getAll(searchDTOTmp, 0, 0);
+        List<UserCommon> res = new ArrayList<>();
+        Date d = new Date();
+        DateUtil now = new DateUtil();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String today = now.dateToString(d, formatter);
+//        System.out.println("todayyyyyyyyyyy " + today);
+        if (lstDTO != null && lstDTO.size() > 0) {
+            for (UserDTO i : lstDTO) {
+                if (i.getDateOfBirthST() != null && i.getDateOfBirthST() != "") {
+//                    System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
+                    if (today.substring(0, 4).equals(i.getDateOfBirthST().substring(0, 4))) {
+                        UserCommon temp = new UserCommon();
+                        temp.setId(i.getGid());
+                        temp.setName_user(i.getFullName());
+                        int age = Integer.parseInt(today.substring(6)) - Integer.parseInt(i.getDateOfBirthST().substring(6));
+//                        System.out.println("aaaaaaaaaaaaaaa  " + age);
+                        temp.setAge(age);
+                        res.add(temp);
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+
     public Integer getCount(SearchCommonFinalDTO searchDTO) {
         return userDAO.getCount(searchDTO);
     }
@@ -76,7 +109,7 @@ public class UserBusinessImpl extends
     public ServiceResult updateObj(UserDTO userDTO) throws IOException, FileNotFoundException, GeneralSecurityException {
 
         ServiceResult result = userDAO.updateObj(userDTO);
-        
+
         return result;
     }
 
@@ -176,7 +209,7 @@ public class UserBusinessImpl extends
         }
         return result;
     }
-    
+
     public ServiceResult send_mail_change_pw(UserDTO userDTO) throws GeneralSecurityException, IOException {
 
         ServiceResult result = new ServiceResult();
@@ -254,6 +287,5 @@ public class UserBusinessImpl extends
         }
         return result;
     }
-    
 
 }
