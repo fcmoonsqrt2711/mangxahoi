@@ -40,6 +40,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
 
         sqlCommand.append(" FROM Post tbl ");
 
+//        sqlCommand.append(" ORDER BY tbl.createdTime DESC ");
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
@@ -47,7 +48,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
             sqlCommand.append(" )   ");
         }
 
-        sqlCommand.append(" ORDER BY tbl.gid ");
+        sqlCommand.append(" ORDER BY tbl.createdTime DESC ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
                 .addScalar("userId", LongType.INSTANCE)

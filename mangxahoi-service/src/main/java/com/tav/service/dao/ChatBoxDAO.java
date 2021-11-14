@@ -49,6 +49,11 @@ public class ChatBoxDAO extends BaseFWDAOImpl<ChatBoxBO, Long> {
             sqlCommand.append(" )   ");
         }
 
+        if (searchDTO.getLong1() != null && searchDTO.getLong2() != null) {
+            sqlCommand.append(" and ( ( tbl.userID1 =:userID1 and tbl.userID2 =:userID2 )  ");
+            sqlCommand.append(" or (  tbl.userID1 =:userID2 and tbl.userID2 =:userID1 ) ) ");
+        }
+
         sqlCommand.append(" ORDER BY tbl.gid ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
@@ -66,6 +71,12 @@ public class ChatBoxDAO extends BaseFWDAOImpl<ChatBoxBO, Long> {
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
         }
+        if (searchDTO.getLong1() != null) {
+            query.setParameter("userID1", searchDTO.getLong1());
+        }
+        if (searchDTO.getLong2() != null) {
+            query.setParameter("userID2", searchDTO.getLong2());
+        }
         return query.list();
     }
 
@@ -81,9 +92,19 @@ public class ChatBoxDAO extends BaseFWDAOImpl<ChatBoxBO, Long> {
             sqlCommand.append(" and (   ");
             sqlCommand.append(" )   ");
         }
+        if (searchDTO.getLong1() != null && searchDTO.getLong2() != null) {
+            sqlCommand.append(" and ( ( tbl.userID1 =:userID1 and tbl.userID2 =:userID2 )  ");
+            sqlCommand.append(" or (  tbl.userID1 =:userID2 and tbl.userID2 =:userID1 ) ) ");
+        }
         Query query = getSession().createSQLQuery(sqlCommand.toString());
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
+        }
+        if (searchDTO.getLong1() != null) {
+            query.setParameter("userID1", searchDTO.getLong1());
+        }
+        if (searchDTO.getLong2() != null) {
+            query.setParameter("userID2", searchDTO.getLong2());
         }
         return ((BigInteger) query.uniqueResult()).intValue();
     }

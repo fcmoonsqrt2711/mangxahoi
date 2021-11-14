@@ -46,9 +46,22 @@ public class ChatBoxBusinessImpl extends
 
     //add
     public ServiceResult addDTO(ChatBoxDTO chatBoxDTO) {
-        ChatBoxBO bo = chatBoxDAO.addDTO(chatBoxDTO);
+
         ServiceResult serviceResult = new ServiceResult();
-        serviceResult.setId(bo.getGid());
+        if (chatBoxDTO.getUserID1() != null && chatBoxDTO.getUserID2() != null) {
+            SearchCommonFinalDTO searchDTO = new SearchCommonFinalDTO();
+            searchDTO.setLong1(chatBoxDTO.getUserID1());
+            searchDTO.setLong2(chatBoxDTO.getUserID2());
+            if (chatBoxDAO.getCount(searchDTO) > 0) {
+                List<ChatBoxDTO> lstDTO = chatBoxDAO.getAll(searchDTO, 0, 0);
+                serviceResult.setId(lstDTO.get(0).getGid());
+                return serviceResult;
+            } else {
+                ChatBoxBO bo = chatBoxDAO.addDTO(chatBoxDTO);
+                serviceResult.setId(bo.getGid());
+            }
+        }
+
         return serviceResult;
     }
 

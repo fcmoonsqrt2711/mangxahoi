@@ -26,6 +26,18 @@ public class UserDTO extends BaseFWDTOImpl<UserBO> {
 
     private byte[] dataImg;		//
 
+    private Long isOnline;		//
+
+    public Long getIsOnline() {
+        return isOnline;
+    }
+
+    public void setIsOnline(Long isOnline) {
+        this.isOnline = isOnline;
+    }
+    
+    
+    
     public byte[] getDataImg() {
         return dataImg;
     }
@@ -135,6 +147,7 @@ public class UserDTO extends BaseFWDTOImpl<UserBO> {
         userBO.setEmail(email);
         userBO.setAddress(address);
         userBO.setAvatarPath(avatarPath);
+        userBO.setIsOnline(isOnline);
         return userBO;
     }
 

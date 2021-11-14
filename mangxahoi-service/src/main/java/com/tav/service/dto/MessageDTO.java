@@ -13,7 +13,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
 	private Long gid;		//Khóa tự sinh
 	private Long chatID;		//
-	private Long userID;		//
+	private Long userID_1;		//
+	private Long userID_2;		//
 	private Long isLike;		//
 	private String message;		//
 	private Date createdTime;		//
@@ -35,14 +36,22 @@ public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
 		this.chatID = chatID;
 	}
 
-	public Long getUserID(){
-		return userID;
+	public Long getUserID_1(){
+		return userID_1;
 	}
 
-	public void setUserID(Long userID){
-		this.userID = userID;
+	public void setUserID_1(Long userID_1){
+		this.userID_1 = userID_1;
 	}
 
+	public Long getUserID_2(){
+		return userID_2;
+	}
+
+	public void setUserID_2(Long userID_2){
+		this.userID_2 = userID_2;
+	}
+        
 	public Long getIsLike(){
 		return isLike;
 	}
@@ -81,7 +90,8 @@ public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
 		MessageBO messageBO = new MessageBO();
 		messageBO.setGid(gid);
 		messageBO.setChatID(chatID);
-		messageBO.setUserID(userID);
+		messageBO.setUserID_1(userID_1);
+		messageBO.setUserID_2(userID_2);
 		messageBO.setIsLike(isLike);
 		messageBO.setMessage(message);
 		messageBO.setCreatedTime(createdTime);

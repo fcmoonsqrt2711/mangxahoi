@@ -18,79 +18,80 @@ import org.hibernate.annotations.Type;
 @Entity
 @Table(name = "Post")
 public class PostBO extends BaseFWModelImpl {
-	private Long gid;		//Khóa tự sinh
-	private Long userId;		//
-	private Long groupId;		//
-	private Date createdTime;		//
-	private String description;		//
 
-	public PostBO(){
-		setColId("gid");
-		setColName("gid");
-		setUniqueColumn(new String[]{"gid"});
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long userId;		//
+    private Long groupId;		//
+    private Date createdTime;		//
+    private String description;		//
 
-	@Id
-	@GeneratedValue(generator = "sequence")
-	@GenericGenerator(name = "sequence", strategy = "sequence",
-		parameters = {
-			@Parameter(name = "sequence", value = "Post_seq")
-		}
-	)
+    public PostBO() {
+        setColId("gid");
+        setColName("gid");
+        setUniqueColumn(new String[]{"gid"});
+    }
 
-	@Column(name = "gid", length = 200)
-	public Long getGid(){
-		return gid;
-	}
+    @Id
+    @GeneratedValue(generator = "sequence")
+    @GenericGenerator(name = "sequence", strategy = "sequence",
+            parameters = {
+                @Parameter(name = "sequence", value = "Post_seq")
+            }
+    )
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    @Column(name = "gid", length = 200)
+    public Long getGid() {
+        return gid;
+    }
 
-	@Column(name = "userId", length = 200)
-	public Long getUserId(){
-		return userId;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	public void setUserId(Long userId){
-		this.userId = userId;
-	}
+    @Column(name = "userId", length = 200)
+    public Long getUserId() {
+        return userId;
+    }
 
-	@Column(name = "groupId", length = 20)
-	public Long getGroupId(){
-		return groupId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public void setGroupId(Long groupId){
-		this.groupId = groupId;
-	}
+    @Column(name = "groupId", length = 20)
+    public Long getGroupId() {
+        return groupId;
+    }
 
-	@Column(name = "createdTime", length = 200)
-	public Date getCreatedTime(){
-		return createdTime;
-	}
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
 
-	public void setCreatedTime(Date createdTime){
-		this.createdTime = createdTime;
-	}
+    @Column(name = "createdTime", length = 200)
+    public Date getCreatedTime() {
+        return createdTime;
+    }
 
-	@Column(name = "description", length = 500000)
-	public String getDescription(){
-		return description;
-	}
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
 
-	public void setDescription(String description){
-		this.description = description;
-	}
+    @Column(name = "description", length = 500000)
+    public String getDescription() {
+        return description;
+    }
 
-	@Override
-	public BaseFWDTOImpl toDTO() {
-		PostDTO postDTO = new PostDTO();
-		postDTO.setGid(gid);
-		postDTO.setUserId(userId);
-		postDTO.setGroupId(groupId);
-		postDTO.setCreatedTime(createdTime);
-		postDTO.setDescription(description);
-		return postDTO;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public BaseFWDTOImpl toDTO() {
+        PostDTO postDTO = new PostDTO();
+        postDTO.setGid(gid);
+        postDTO.setUserId(userId);
+        postDTO.setGroupId(groupId);
+        postDTO.setCreatedTime(createdTime);
+        postDTO.setDescription(description);
+        return postDTO;
+    }
 }

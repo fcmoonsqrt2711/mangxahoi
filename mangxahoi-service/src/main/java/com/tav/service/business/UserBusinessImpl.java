@@ -28,10 +28,15 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+
 
 @Service("userBusinessImpl")
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -116,6 +121,19 @@ public class UserBusinessImpl extends
     public ServiceResult addObj(UserDTO userDTO) throws IOException, FileNotFoundException, GeneralSecurityException {
         ServiceResult result;
         UserBO bo = userDAO.addDTO(userDTO);
+        result = new ServiceResult();
+        return result;
+    }
+
+    public ServiceResult addFile(MultipartHttpServletRequest multipartRequest,
+            HttpServletRequest request) throws IOException, FileNotFoundException, GeneralSecurityException {
+        ServiceResult result;
+
+        System.out.println("test   user_id:  ");
+        if (request.getParameter("user_id") != null) {
+            System.out.println("user_id:  " + Long.parseLong(request.getParameter("user_id")));
+        }
+//        UserBO bo = userDAO.addDTO(userDTO);
         result = new ServiceResult();
         return result;
     }

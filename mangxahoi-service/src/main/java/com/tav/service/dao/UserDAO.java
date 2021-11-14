@@ -71,6 +71,10 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
+        
+        
+        sqlCommand.append("tbl.isOnline as isOnline, ");
+        
         sqlCommand.append("tbl.avatarPath as avatarPath ");
 
         sqlCommand.append(" FROM User_mxh tbl ");
@@ -110,6 +114,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 .addScalar("email", StringType.INSTANCE)
                 .addScalar("address", StringType.INSTANCE)
                 .addScalar("avatarPath", StringType.INSTANCE)
+                .addScalar("isOnline", LongType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(UserDTO.class))
                 .setFirstResult(offset);
         if (limit != null && limit != 0) {
@@ -164,6 +169,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
+        sqlCommand.append("tbl.isOnline as isOnline, ");
         sqlCommand.append("tbl.avatarPath as avatarPath ");
 
         sqlCommand.append(" FROM User_mxh tbl ");
@@ -180,6 +186,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 .addScalar("email", StringType.INSTANCE)
                 .addScalar("address", StringType.INSTANCE)
                 .addScalar("avatarPath", StringType.INSTANCE)
+                .addScalar("isOnline", LongType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(UserDTO.class));
         query.setParameter("gid", id);
         UserDTO item = (UserDTO) query.uniqueResult();

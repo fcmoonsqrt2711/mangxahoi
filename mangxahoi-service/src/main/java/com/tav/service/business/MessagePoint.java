@@ -41,9 +41,6 @@ public class MessagePoint {
 //        session.getBasicRemote().sendText("Connected! " + session.getBasicRemote());
         System.out.println("Clien is connected ");
         sessions.add(session);
-       
-       
-
     }
 
     

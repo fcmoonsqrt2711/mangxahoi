@@ -15,4 +15,6 @@
     <system systemId="http://www.springframework.org/schema/tx/spring-tx.xsd" uri="www.springframework.org/schema/tx/spring-tx.xsd"/>
     <system systemId="http://www.springframework.org/schema/beans/spring-beans-4.3.xsd" uri="www.springframework.org/schema/beans/spring-beans-4.3.xsd"/>
     <system systemId="http://www.springframework.org/schema/tool/spring-tool-4.3.xsd" uri="www.springframework.org/schema/tool/spring-tool-4.3.xsd"/>
+    <system systemId="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" uri="www.springframework.org/schema/beans/spring-beans-4.0.xsd"/>
+    <system systemId="http://www.springframework.org/schema/security/spring-security-4.0.xsd" uri="www.springframework.org/schema/security/spring-security-4.0.xsd"/>
 </catalog>

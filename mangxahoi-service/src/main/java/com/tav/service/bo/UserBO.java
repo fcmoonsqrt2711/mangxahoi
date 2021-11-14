@@ -31,6 +31,9 @@ public class UserBO extends BaseFWModelImpl {
     private String avatarPath;		//
     
     
+    private Long isOnline;		//
+    
+    
     private byte[] dataImg;		//
 
     public UserBO() {
@@ -146,6 +149,15 @@ public class UserBO extends BaseFWModelImpl {
         this.dataImg = dataImg;
     }
 
+    @Column(name = "isOnline", length = 500000)
+    public Long getIsOnline() {
+        return isOnline;
+    }
+
+    public void setIsOnline(Long isOnline) {
+        this.isOnline = isOnline;
+    }
+
     @Override
     public BaseFWDTOImpl toDTO() {
         UserDTO userDTO = new UserDTO();
@@ -160,6 +172,7 @@ public class UserBO extends BaseFWModelImpl {
         userDTO.setAddress(address);
         userDTO.setAvatarPath(avatarPath);
         userDTO.setDataImg(dataImg);
+        userDTO.setIsOnline(isOnline);
         return userDTO;
     }
 }

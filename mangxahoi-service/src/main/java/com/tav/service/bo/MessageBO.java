@@ -20,7 +20,8 @@ import org.hibernate.annotations.Type;
 public class MessageBO extends BaseFWModelImpl {
 	private Long gid;		//Khóa tự sinh
 	private Long chatID;		//
-	private Long userID;		//
+	private Long userID_1;		//
+	private Long userID_2;		//
 	private Long isLike;		//
 	private String message;		//
 	private Date createdTime;		//
@@ -57,15 +58,23 @@ public class MessageBO extends BaseFWModelImpl {
 		this.chatID = chatID;
 	}
 
-	@Column(name = "userID", length = 20)
-	public Long getUserID(){
-		return userID;
+	@Column(name = "userID_1", length = 20)
+	public Long getUserID_1(){
+		return userID_1;
 	}
 
-	public void setUserID(Long userID){
-		this.userID = userID;
+	public void setUserID_1(Long userID_1){
+		this.userID_1 = userID_1;
 	}
 
+	@Column(name = "userID_2", length = 20)
+	public Long getUserID_2(){
+		return userID_2;
+	}
+
+	public void setUserID_2(Long userID_2){
+		this.userID_2 = userID_2;
+	}
 	@Column(name = "isLike", length = 200)
 	public Long getIsLike(){
 		return isLike;
@@ -98,7 +107,8 @@ public class MessageBO extends BaseFWModelImpl {
 		MessageDTO messageDTO = new MessageDTO();
 		messageDTO.setGid(gid);
 		messageDTO.setChatID(chatID);
-		messageDTO.setUserID(userID);
+		messageDTO.setUserID_1(userID_1);
+		messageDTO.setUserID_2(userID_2);
 		messageDTO.setIsLike(isLike);
 		messageDTO.setMessage(message);
 		messageDTO.setCreatedTime(createdTime);
