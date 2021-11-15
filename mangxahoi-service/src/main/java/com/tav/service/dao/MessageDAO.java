@@ -2,6 +2,7 @@ package com.tav.service.dao;
 
 import com.tav.service.base.db.dao.BaseFWDAOImpl;
 import com.tav.service.bo.MessageBO;
+import com.tav.service.common.DateUtil;
 import com.tav.service.dto.MessageDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
@@ -176,6 +177,11 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
     @Transactional
     public MessageBO addDTO(MessageDTO dto) {
         ServiceResult result = new ServiceResult();
+        Date now = new Date();
+        dto.setCreatedTime(now);
+        
+        dto.setCreatedTimeST(DateUtil.getCurrentDateTime());
+        
         Session session1 = getSession();
         MessageBO BO = new MessageBO();
         try {

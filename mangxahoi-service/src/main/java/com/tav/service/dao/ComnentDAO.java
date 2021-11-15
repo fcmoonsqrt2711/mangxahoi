@@ -2,6 +2,7 @@ package com.tav.service.dao;
 
 import com.tav.service.base.db.dao.BaseFWDAOImpl;
 import com.tav.service.bo.ComnentBO;
+import com.tav.service.common.DateUtil;
 import com.tav.service.dto.ComnentDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
@@ -171,6 +172,10 @@ public class ComnentDAO extends BaseFWDAOImpl<ComnentBO, Long> {
     public ComnentBO addDTO(ComnentDTO dto) {
         ServiceResult result = new ServiceResult();
         Session session1 = getSession();
+        Date now = new Date();
+        dto.setCreatedTime(now);
+
+        dto.setCreatedTimeST(DateUtil.getCurrentDateTime());
         ComnentBO BO = new ComnentBO();
         try {
             BO = (ComnentBO) session1.merge(dto.toModel());
