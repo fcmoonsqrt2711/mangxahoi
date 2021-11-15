@@ -16,6 +16,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
+import org.apache.cxf.jaxrs.ext.multipart.*; 
 
 public interface UserRsService {
 
@@ -77,7 +79,7 @@ public interface UserRsService {
     @Consumes("multipart/form-data")
     @Produces("text/html;charset=utf-8")
     @Path("/upload")
-    public Response uploadFile( //
-            @FormDataParam("uploadFile") InputStream fileInputStream);
+    public Response upload(@Multipart("userId") String userId,
+            @Multipart("upfile") Attachment attachment);
 
 }

@@ -2,6 +2,7 @@ package com.tav.service.dao;
 
 import com.tav.service.base.db.dao.BaseFWDAOImpl;
 import com.tav.service.bo.UserLikePostBO;
+import com.tav.service.common.DateUtil;
 import com.tav.service.dto.UserLikePostDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
@@ -166,6 +167,10 @@ public class UserLikePostDAO extends BaseFWDAOImpl<UserLikePostBO, Long> {
     @Transactional
     public UserLikePostBO addDTO(UserLikePostDTO dto) {
         ServiceResult result = new ServiceResult();
+        Date now = new Date();
+        dto.setLikeTime(now);
+        
+        dto.setLikeTimeST(DateUtil.getCurrentDateTime());
         Session session1 = getSession();
         UserLikePostBO BO = new UserLikePostBO();
         try {

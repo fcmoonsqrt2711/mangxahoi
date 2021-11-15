@@ -1,5 +1,6 @@
 package com.tav.service.rest;
 
+import com.google.common.io.CharStreams;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 import com.tav.service.business.UserBusinessImpl;
@@ -32,6 +33,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.core.io.Resource;
+
+import org.springframework.http.HttpHeaders;
+
+import org.springframework.http.MediaType;
+
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
+import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
 public class UserRsServiceImpl implements UserRsService {
 
@@ -133,74 +163,36 @@ public class UserRsServiceImpl implements UserRsService {
     }
 
     @Override
-    public Response uploadFile(@FormDataParam("uploadFile") InputStream fileInputStream) {
-
-        System.out.println("fileeeeeeeeeeeeeeeee   : ");
+    public Response upload(@Multipart("userId") String userId,
+            @Multipart("upfile") Attachment attachment) {
 
         ServiceResult result = null;
         OutputStream outStream = null;
         File targetFile = new File("avatar.txt");
 
-//        try {
-//            outStream = new FileOutputStream(targetFile);
-//            byte[] buffer = new byte[8 * 1024];
-//            int bytesRead;
-//            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-//                outStream.write(buffer, 0, bytesRead);
-//            }
-//            IOUtils.closeQuietly(fileInputStream);
-//            IOUtils.closeQuietly(outStream);
-//            //here you got your file
-//            return Response.ok(result).build();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            try {
-//                outStream.close();
-//            } catch (IOException ex) {
-//                Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-// khong xem dk anh
-//        try (OutputStream outputStream = new FileOutputStream(targetFile)) {
-//            IOUtils.copy(fileInputStream, outputStream);
-//            
-//            
-//        } catch (FileNotFoundException e) {
-//            // handle exception here
-//        } catch (IOException e) {
-//            // handle exception here
-//        }
-        try {
-            OutputStream out = null;
-            int read = 0;
-            byte[] bytes = new byte[1024];
-            out = new FileOutputStream(targetFile);
-            while ((read = fileInputStream.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
+        if (userId != null) {
+
+            Long user_Id = Long.parseLong(userId);
+            System.out.println("user_Id  : " + user_Id);
+
+            String filename = attachment.getContentDisposition().getParameter("filename");
+            String[] parts = filename.split("\\.");
+
+            String file_name_save = "avatar_" + user_Id + "." + parts[parts.length - 1];
+
+            System.out.println("fileeeeeeeeeeeeeeeee   : " + file_name_save);
+
+            java.nio.file.Path path = Paths.get(file_name_save);
+            try {
+                Files.deleteIfExists(path);
+                InputStream in = attachment.getObject(InputStream.class);
+
+                Files.copy(in, path);
+            } catch (IOException ex) {
+                Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.flush();
-            out.close();
-        } catch (FileNotFoundException e) {
-            // handle exception here
-        } catch (IOException e) {
-            // handle exception here
         }
         return null;
     }
 
-    @RequestMapping(value = {"/upload1"}, method = RequestMethod.POST, produces = "text/html;charset=utf-8")
-    @ResponseBody
-    public String addOBJ(MultipartHttpServletRequest multipartRequest,
-            HttpServletRequest request) throws ParseException {
-
-        String rs = null;
-        
-        System.out.println("aaaaaaaaaaaaa day r");
-        
-        return rs;
-
-    }
 }

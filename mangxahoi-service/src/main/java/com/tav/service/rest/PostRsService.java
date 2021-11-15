@@ -11,41 +11,55 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
+import org.apache.cxf.jaxrs.ext.multipart.*; 
 
 public interface PostRsService {
-	@POST
-	@Path("/getAll/{offset}/{limit}")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getAll(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
-	@POST
-	@Path("/getCount")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getCount(SearchCommonFinalDTO searchDTO);
+    @POST
+    @Path("/getAll/{offset}/{limit}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAll(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
-	@GET
-	@Path("/getOneById/{id}")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getOneById(@PathParam("id") Long id);
+    @POST
+    @Path("/getCount")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getCount(SearchCommonFinalDTO searchDTO);
 
-	@POST
-	@Path("/deleteList/")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response deleteList(ObjectCommonSearchDTO searchDTO);
+    @GET
+    @Path("/getOneById/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getOneById(@PathParam("id") Long id);
 
-	@POST
-	@Path("/updateBO/")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response updateObj(PostDTO postDTO);
+    @POST
+    @Path("/deleteList/")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response deleteList(ObjectCommonSearchDTO searchDTO);
 
-	@POST
-	@Path("/addDTO/")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response addDTO(PostDTO postDTO);
+    @POST
+    @Path("/updateBO/")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response updateObj(PostDTO postDTO);
+
+    @POST
+    @Path("/addDTO/")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response addDTO(PostDTO postDTO);
+
+    @POST
+    @Consumes("multipart/form-data")
+    @Produces("text/html;charset=utf-8")
+    @Path("/upload")
+    public Response upload(@Multipart("postId") String postId,
+            @Multipart("upfile") Attachment attachment);
+
+    
 }

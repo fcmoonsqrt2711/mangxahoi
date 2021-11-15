@@ -2,6 +2,7 @@ package com.tav.service.dao;
 
 import com.tav.service.base.db.dao.BaseFWDAOImpl;
 import com.tav.service.bo.PostBO;
+import com.tav.service.common.DateUtil;
 import com.tav.service.dto.PostDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
@@ -44,7 +45,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
-            sqlCommand.append(" and (   ");
+            sqlCommand.append(" and ( tbl.description like :stringKeyWord  ");
             sqlCommand.append(" )   ");
         }
 
@@ -75,7 +76,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
-            sqlCommand.append(" and (   ");
+            sqlCommand.append(" and ( tbl.description like :stringKeyWord  ");
             sqlCommand.append(" )   ");
         }
         Query query = getSession().createSQLQuery(sqlCommand.toString());
@@ -156,6 +157,10 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
     @Transactional
     public PostBO addDTO(PostDTO dto) {
         ServiceResult result = new ServiceResult();
+        Date now = new Date();
+        dto.setCreatedTime(now);
+
+        dto.setCreatedTimeST(DateUtil.getCurrentDateTime());
         Session session1 = getSession();
         PostBO BO = new PostBO();
         try {
