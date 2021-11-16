@@ -61,13 +61,13 @@ public class UserBusinessImpl extends
         List<UserCommon> res = new ArrayList<>();
         Date d = new Date();
         DateUtil now = new DateUtil();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         String today = now.dateToString(d, formatter);
-//        System.out.println("todayyyyyyyyyyy " + today);
+        System.out.println("todayyyyyyyyyyy " + today);
         if (lstDTO != null && lstDTO.size() > 0) {
             for (UserDTO i : lstDTO) {
                 if (i.getDateOfBirthST() != null && i.getDateOfBirthST() != "") {
-//                    System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
+                    System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
                     if (today.substring(0, 4).equals(i.getDateOfBirthST().substring(0, 4))) {
                         UserCommon temp = new UserCommon();
                         temp.setId(i.getGid());
@@ -122,6 +122,7 @@ public class UserBusinessImpl extends
         ServiceResult result;
         UserBO bo = userDAO.addDTO(userDTO);
         result = new ServiceResult();
+        result.setId(bo.getGid());
         return result;
     }
 
