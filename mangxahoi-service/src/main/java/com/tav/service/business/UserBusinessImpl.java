@@ -122,6 +122,7 @@ public class UserBusinessImpl extends
         ServiceResult result;
         UserBO bo = userDAO.addDTO(userDTO);
         result = new ServiceResult();
+        result.setId(bo.getGid());
         return result;
     }
 

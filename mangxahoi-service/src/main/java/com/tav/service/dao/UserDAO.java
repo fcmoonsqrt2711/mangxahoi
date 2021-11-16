@@ -67,7 +67,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.fullName as fullName, ");
         sqlCommand.append("tbl.gender as gender, ");
         sqlCommand.append("tbl.dateOfBirth as dateOfBirth, ");
-        sqlCommand.append("to_char(tbl.dateOfBirth, 'MM/DD/YYYY') as dateOfBirthST, ");
+        sqlCommand.append("to_char(tbl.dateOfBirth, 'dd/MM/yyyy') as dateOfBirthST, ");
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
@@ -97,7 +97,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         }
 
         if (!StringUtil.isEmpty(searchDTO.getString17())) { // birthDay
-            sqlCommand.append(" and ( ( to_char(tbl.dateOfBirth, 'DD/MM/YYYY') ) = :birthDay  ");
+            sqlCommand.append(" and ( ( to_char(tbl.dateOfBirth, 'dd/MM/yyyy') ) = :birthDay  ");
             sqlCommand.append(" )   ");
         }
 
@@ -166,7 +166,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.fullName as fullName, ");
         sqlCommand.append("tbl.gender as gender, ");
         sqlCommand.append("tbl.dateOfBirth as dateOfBirth, ");
-        sqlCommand.append("to_char(tbl.dateOfBirth, 'MM/DD/YYYY') as dateOfBirthST, ");
+        sqlCommand.append("to_char(tbl.dateOfBirth, 'dd/mm/yyyy') as dateOfBirthST, ");
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
