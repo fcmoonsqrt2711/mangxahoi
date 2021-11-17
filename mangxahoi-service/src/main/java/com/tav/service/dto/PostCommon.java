@@ -20,6 +20,7 @@ public class PostCommon {
     private Date createdTime;		//
     private String createdTimeST;
     private String description;		//
+    private Long isAvatar;		//
     
     private Integer countLike;		//
     private Integer countCmt;		//
@@ -95,6 +96,14 @@ public class PostCommon {
 
     public void setLstUserLike(List<UserLikePostDTO> lstUserLike) {
         this.lstUserLike = lstUserLike;
+    }
+
+    public Long getIsAvatar() {
+        return isAvatar;
+    }
+
+    public void setIsAvatar(Long isAvatar) {
+        this.isAvatar = isAvatar;
     }
 
 }

@@ -48,6 +48,7 @@ public class PostBusinessImpl extends
             temp.setCreatedTime(i.getCreatedTime());
             temp.setCreatedTimeST(i.getCreatedTimeST());
             temp.setDescription(i.getDescription());
+            temp.setIsAvatar(i.getIsAvatar());
 
             SearchCommonFinalDTO searchDTO = new SearchCommonFinalDTO();
             searchDTO.setLong1(i.getGid());

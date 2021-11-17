@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/UserBO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/PostRsService.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/ComnentDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/UserDTO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/PostRsServiceImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/PostCommon.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/MessagePoint1.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsServiceImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/PostBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserLikePostDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/PostBO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/PostDTO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/PostDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
