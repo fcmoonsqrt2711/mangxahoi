@@ -38,7 +38,7 @@ import org.springframework.stereotype.Component;
  * @author Apple family
  */
 @Component
-@ServerEndpoint(value = "/message1")
+@ServerEndpoint(value = "/message1_old")
 public class MessagePoint1 {
 
     static Integer count = 0;

@@ -47,6 +47,10 @@ public class UserLikePostDAO extends BaseFWDAOImpl<UserLikePostBO, Long> {
             sqlCommand.append(" and (   ");
             sqlCommand.append(" )   ");
         }
+        if (searchDTO.getLong1() != null) {
+            sqlCommand.append(" and ( tbl.postId = :postId  ");
+            sqlCommand.append(" )   ");
+        }
 
         sqlCommand.append(" ORDER BY tbl.gid ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
@@ -63,6 +67,10 @@ public class UserLikePostDAO extends BaseFWDAOImpl<UserLikePostBO, Long> {
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
         }
+        if (searchDTO.getLong1() != null) {
+            query.setParameter("postId", searchDTO.getLong1());
+        }
+
         return query.list();
     }
 

@@ -8,6 +8,7 @@ import com.tav.service.common.CommonFunction;
 import com.tav.service.dto.UserDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
+import com.tav.service.dto.PostDTO;
 import com.tav.service.dto.ServiceResult;
 import com.tav.service.dto.UserCommon;
 import java.io.BufferedOutputStream;
@@ -178,6 +179,16 @@ public class UserRsServiceImpl implements UserRsService {
             String filename = attachment.getContentDisposition().getParameter("filename");
             String[] parts = filename.split("\\.");
 
+            UserDTO userDTO = userBusinessImpl.getOneObjById(user_Id);
+            userDTO.setIsAvatar(1L);
+            try {
+                result = userBusinessImpl.updateObj(userDTO);
+            } catch (IOException ex) {
+                Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (GeneralSecurityException ex) {
+                Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             String file_name_save = "avatar_" + user_Id + "." + parts[parts.length - 1];
 
             System.out.println("fileeeeeeeeeeeeeeeee   : " + file_name_save);
@@ -192,7 +203,7 @@ public class UserRsServiceImpl implements UserRsService {
                 Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return null;
+        return Response.ok(result).build();
     }
 
 }
