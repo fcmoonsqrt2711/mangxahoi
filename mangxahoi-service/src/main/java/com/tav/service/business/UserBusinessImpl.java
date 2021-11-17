@@ -63,11 +63,11 @@ public class UserBusinessImpl extends
         DateUtil now = new DateUtil();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String today = now.dateToString(d, formatter);
-//        System.out.println("todayyyyyyyyyyy " + today);
+        System.out.println("todayyyyyyyyyyy " + today);
         if (lstDTO != null && lstDTO.size() > 0) {
             for (UserDTO i : lstDTO) {
                 if (i.getDateOfBirthST() != null && i.getDateOfBirthST() != "") {
-//                    System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
+                    System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
                     if (today.substring(0, 4).equals(i.getDateOfBirthST().substring(0, 4))) {
                         UserCommon temp = new UserCommon();
                         temp.setId(i.getGid());

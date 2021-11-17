@@ -74,6 +74,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         
         
         sqlCommand.append("tbl.isOnline as isOnline, ");
+        sqlCommand.append("tbl.isAvatar as isAvatar, ");
         
         sqlCommand.append("tbl.avatarPath as avatarPath ");
 
@@ -115,6 +116,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 .addScalar("address", StringType.INSTANCE)
                 .addScalar("avatarPath", StringType.INSTANCE)
                 .addScalar("isOnline", LongType.INSTANCE)
+                .addScalar("isAvatar", LongType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(UserDTO.class))
                 .setFirstResult(offset);
         if (limit != null && limit != 0) {
@@ -166,11 +168,12 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.fullName as fullName, ");
         sqlCommand.append("tbl.gender as gender, ");
         sqlCommand.append("tbl.dateOfBirth as dateOfBirth, ");
-        sqlCommand.append("to_char(tbl.dateOfBirth, 'dd/mm/yyyy') as dateOfBirthST, ");
+        sqlCommand.append("to_char(tbl.dateOfBirth, 'dd/MM/yyyy') as dateOfBirthST, ");
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
         sqlCommand.append("tbl.isOnline as isOnline, ");
+        sqlCommand.append("tbl.isAvatar as isAvatar, ");
         sqlCommand.append("tbl.avatarPath as avatarPath ");
 
         sqlCommand.append(" FROM User_mxh tbl ");
@@ -188,6 +191,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
                 .addScalar("address", StringType.INSTANCE)
                 .addScalar("avatarPath", StringType.INSTANCE)
                 .addScalar("isOnline", LongType.INSTANCE)
+                .addScalar("isAvatar", LongType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(UserDTO.class));
         query.setParameter("gid", id);
         UserDTO item = (UserDTO) query.uniqueResult();
