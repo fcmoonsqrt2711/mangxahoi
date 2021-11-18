@@ -11,80 +11,90 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "PostDTO")
 public class PostDTO extends BaseFWDTOImpl<PostBO> {
-	private Long gid;		//Khóa tự sinh
-	private Long userId;		//
-	private Long groupId;		//
-	private Date createdTime;		//
-	private String createdTimeST;
-	private String description;		//
 
-	public Long getGid(){
-		return gid;
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long userId;		//
+    private Long groupId;		//
+    private Date createdTime;		//
+    private String createdTimeST;
+    private String description;		//
+    private Long isAvatar;		//
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    public Long getIsAvatar() {
+        return isAvatar;
+    }
 
-	public Long getUserId(){
-		return userId;
-	}
+    public void setIsAvatar(Long isAvatar) {
+        this.isAvatar = isAvatar;
+    }
 
-	public void setUserId(Long userId){
-		this.userId = userId;
-	}
+    public Long getGid() {
+        return gid;
+    }
 
-	public Long getGroupId(){
-		return groupId;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	public void setGroupId(Long groupId){
-		this.groupId = groupId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public Date getCreatedTime(){
-		return createdTime;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public void setCreatedTime(Date createdTime){
-		this.createdTime = createdTime;
-	}
+    public Long getGroupId() {
+        return groupId;
+    }
 
-	public String getCreatedTimeST(){
-		return createdTimeST;
-	}
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
 
-	public void setCreatedTimeST(String createdTimeST){
-		this.createdTimeST = createdTimeST;
-	}
+    public Date getCreatedTime() {
+        return createdTime;
+    }
 
-	public String getDescription(){
-		return description;
-	}
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
 
-	public void setDescription(String description){
-		this.description = description;
-	}
+    public String getCreatedTimeST() {
+        return createdTimeST;
+    }
 
+    public void setCreatedTimeST(String createdTimeST) {
+        this.createdTimeST = createdTimeST;
+    }
 
-	@Override
-	public PostBO toModel() {
-		PostBO postBO = new PostBO();
-		postBO.setGid(gid);
-		postBO.setUserId(userId);
-		postBO.setGroupId(groupId);
-		postBO.setCreatedTime(createdTime);
-		postBO.setDescription(description);
-		return postBO;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	@Override
-	public Long getFWModelId() {
-		return getGid();
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	@Override
-	public String catchName() {
-		return gid.toString();
-	}
+    @Override
+    public PostBO toModel() {
+        PostBO postBO = new PostBO();
+        postBO.setGid(gid);
+        postBO.setUserId(userId);
+        postBO.setGroupId(groupId);
+        postBO.setCreatedTime(createdTime);
+        postBO.setDescription(description);
+        postBO.setIsAvatar(isAvatar);
+        return postBO;
+    }
+
+    @Override
+    public Long getFWModelId() {
+        return getGid();
+    }
+
+    @Override
+    public String catchName() {
+        return gid.toString();
+    }
 }

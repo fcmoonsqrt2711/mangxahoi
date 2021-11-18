@@ -4,6 +4,7 @@ import com.tav.service.business.PostBusinessImpl;
 import com.tav.service.dto.PostDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
+import com.tav.service.dto.PostCommon;
 import com.tav.service.dto.ServiceResult;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class PostRsServiceImpl implements PostRsService {
 
     @Override
     public Response getAll(SearchCommonFinalDTO searchDTO, Integer offset, Integer limit) {
-        List<PostDTO> lst = postBusinessImpl.getAll(searchDTO, offset, limit);
+        List<PostCommon> lst = postBusinessImpl.getAll(searchDTO, offset, limit);
         if (lst == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         } else {
@@ -82,6 +83,10 @@ public class PostRsServiceImpl implements PostRsService {
             Long post_Id = Long.parseLong(postId);
             System.out.println("post_Id  : " + post_Id);
 
+            PostDTO postDTO = postBusinessImpl.getOneObjById(post_Id);
+            postDTO.setIsAvatar(1L);
+            result = postBusinessImpl.updateObj(postDTO);
+
             String filename = attachment.getContentDisposition().getParameter("filename");
             String[] parts = filename.split("\\.");
 
@@ -99,6 +104,6 @@ public class PostRsServiceImpl implements PostRsService {
                 Logger.getLogger(UserRsServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return null;
+        return Response.ok(result).build();
     }
 }

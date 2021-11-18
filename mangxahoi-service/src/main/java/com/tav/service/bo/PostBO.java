@@ -24,6 +24,7 @@ public class PostBO extends BaseFWModelImpl {
     private Long groupId;		//
     private Date createdTime;		//
     private String description;		//
+    private Long isAvatar;		//
 
     public PostBO() {
         setColId("gid");
@@ -84,6 +85,15 @@ public class PostBO extends BaseFWModelImpl {
         this.description = description;
     }
 
+    @Column(name = "isAvatar", length = 500000)
+    public Long getIsAvatar() {
+        return isAvatar;
+    }
+
+    public void setIsAvatar(Long isAvatar) {
+        this.isAvatar = isAvatar;
+    }
+
     @Override
     public BaseFWDTOImpl toDTO() {
         PostDTO postDTO = new PostDTO();
@@ -92,6 +102,7 @@ public class PostBO extends BaseFWModelImpl {
         postDTO.setGroupId(groupId);
         postDTO.setCreatedTime(createdTime);
         postDTO.setDescription(description);
+        postDTO.setIsAvatar(isAvatar);
         return postDTO;
     }
 }

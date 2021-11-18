@@ -37,6 +37,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         sqlCommand.append("tbl.userId as userId, ");
         sqlCommand.append("tbl.groupId as groupId, ");
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST, ");
+        sqlCommand.append("tbl.isAvatar as isAvatar, ");
         sqlCommand.append("tbl.description as description ");
 
         sqlCommand.append(" FROM Post tbl ");
@@ -56,6 +57,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
                 .addScalar("groupId", LongType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .addScalar("description", StringType.INSTANCE)
+                .addScalar("isAvatar", LongType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(PostDTO.class))
                 .setFirstResult(offset);
         if (limit != null && limit != 0) {
@@ -94,6 +96,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         sqlCommand.append("tbl.userId as userId, ");
         sqlCommand.append("tbl.groupId as groupId, ");
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST, ");
+        sqlCommand.append("tbl.isAvatar as isAvatar, ");
         sqlCommand.append("tbl.description as description ");
 
         sqlCommand.append(" FROM Post tbl ");
@@ -104,6 +107,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
                 .addScalar("groupId", LongType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .addScalar("description", StringType.INSTANCE)
+                .addScalar("isAvatar", LongType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(PostDTO.class));
         query.setParameter("gid", id);
         PostDTO item = (PostDTO) query.uniqueResult();

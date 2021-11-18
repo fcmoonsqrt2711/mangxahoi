@@ -161,7 +161,7 @@ public class UserBO extends BaseFWModelImpl {
 
     @Column(name = "isAvatar", length = 500000)
     public Long getIsAvatar() {
-        return isOnline;
+        return isAvatar;
     }
 
     public void setIsAvatar(Long isAvatar) {
