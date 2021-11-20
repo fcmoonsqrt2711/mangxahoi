@@ -61,7 +61,7 @@ public class UserBusinessImpl extends
         List<UserCommon> res = new ArrayList<>();
         Date d = new Date();
         DateUtil now = new DateUtil();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String today = now.dateToString(d, formatter);
         System.out.println("todayyyyyyyyyyy " + today);
         if (lstDTO != null && lstDTO.size() > 0) {
@@ -70,7 +70,7 @@ public class UserBusinessImpl extends
                     System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
                     if (today.substring(0, 4).equals(i.getDateOfBirthST().substring(0, 4))) {
                         UserCommon temp = new UserCommon();
-                        temp.setId(i.getGid());
+                        temp.setGid(i.getGid());
                         temp.setFullName(i.getFullName());
                         int age = Integer.parseInt(today.substring(6)) - Integer.parseInt(i.getDateOfBirthST().substring(6));
 //                        System.out.println("aaaaaaaaaaaaaaa  " + age);

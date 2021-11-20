@@ -5,12 +5,14 @@ import com.tav.service.bo.PostBO;
 import com.tav.service.common.Constants;
 import com.tav.service.dao.ComnentDAO;
 import com.tav.service.dao.PostDAO;
+import com.tav.service.dao.UserDAO;
 import com.tav.service.dao.UserLikePostDAO;
 import com.tav.service.dto.PostDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.PostCommon;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
+import com.tav.service.dto.UserDTO;
 import com.tav.service.dto.UserLikePostDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,8 @@ public class PostBusinessImpl extends
     private UserLikePostDAO userLikePostDAO;
     @Autowired
     private ComnentDAO comnentDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @Override
     public PostDAO gettDAO() {
@@ -49,6 +53,12 @@ public class PostBusinessImpl extends
             temp.setCreatedTimeST(i.getCreatedTimeST());
             temp.setDescription(i.getDescription());
             temp.setIsAvatar(i.getIsAvatar());
+
+            if (i.getUserId() != null) {
+
+                UserDTO userDTO = userDAO.getOneObjById(i.getUserId());
+                temp.setFullName(userDTO.getFullName());
+            }
 
             SearchCommonFinalDTO searchDTO = new SearchCommonFinalDTO();
             searchDTO.setLong1(i.getGid());

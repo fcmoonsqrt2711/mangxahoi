@@ -83,7 +83,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
-            sqlCommand.append(" and ( tbl.fullName like :stringKeyWord  ");
+            sqlCommand.append(" and ( tbl.fullName like :stringKeyWord  or tbl.address like :stringKeyWord ");
             sqlCommand.append(" )   ");
         }
 
@@ -147,7 +147,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append(" WHERE 1=1 ");
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
-            sqlCommand.append(" and ( tbl.fullName like :stringKeyWord  ");
+            sqlCommand.append(" and ( tbl.fullName like :stringKeyWord  or tbl.address like :stringKeyWord ");
             sqlCommand.append(" )   ");
         }
 

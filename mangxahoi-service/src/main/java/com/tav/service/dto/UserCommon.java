@@ -11,7 +11,7 @@ package com.tav.service.dto;
  */
 public class UserCommon {
 
-    private Long id;
+    private Long gid;
 
     private String error;
     
@@ -42,12 +42,12 @@ public class UserCommon {
         this.errorType = errorType;
     }
 
-    public Long getId() {
-        return id;
+    public Long getGid() {
+        return gid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGid(Long gid) {
+        this.gid = gid;
     }
 
     public String getError() {

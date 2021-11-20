@@ -26,6 +26,10 @@ public class PostCommon {
     private Integer countCmt;		//
     private List<UserLikePostDTO> lstUserLike;		//
 
+    
+    private String fullName;		//
+    
+    
     public Long getGid() {
         return gid;
     }
@@ -104,6 +108,14 @@ public class PostCommon {
 
     public void setIsAvatar(Long isAvatar) {
         this.isAvatar = isAvatar;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
 }

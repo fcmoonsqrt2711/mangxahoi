@@ -6,9 +6,13 @@
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsServiceImpl.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/PostBusinessImpl.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/UserCommon.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/ComnentDTO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserDAO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/GroupDAO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserBusinessImpl.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/ComnentBusinessImpl.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/ComnentDAO.java</file>
+            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/PostDTO.java</file>
             <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/PostCommon.java</file>
         </group>
     </open-files>
