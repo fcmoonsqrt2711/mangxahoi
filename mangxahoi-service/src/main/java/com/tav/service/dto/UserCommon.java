@@ -16,7 +16,7 @@ public class UserCommon {
     private String error;
     
     private int age;
-    private String name_user;
+    private String fullname;
 
     private String errorType;
 
@@ -87,12 +87,12 @@ public class UserCommon {
         this.age = age;
     }
 
-    public String getName_user() {
-        return name_user;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setName_user(String name_user) {
-        this.name_user = name_user;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
 }

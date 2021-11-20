@@ -71,7 +71,7 @@ public class UserBusinessImpl extends
                     if (today.substring(0, 4).equals(i.getDateOfBirthST().substring(0, 4))) {
                         UserCommon temp = new UserCommon();
                         temp.setId(i.getGid());
-                        temp.setName_user(i.getFullName());
+                        temp.setFullname(i.getFullName());
                         int age = Integer.parseInt(today.substring(6)) - Integer.parseInt(i.getDateOfBirthST().substring(6));
 //                        System.out.println("aaaaaaaaaaaaaaa  " + age);
                         temp.setAge(age);
