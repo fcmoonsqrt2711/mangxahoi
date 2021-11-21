@@ -54,12 +54,6 @@ public class PostBusinessImpl extends
             temp.setDescription(i.getDescription());
             temp.setIsAvatar(i.getIsAvatar());
 
-            if (i.getUserId() != null) {
-
-                UserDTO userDTO = userDAO.getOneObjById(i.getUserId());
-                temp.setFullName(userDTO.getFullName());
-            }
-
             SearchCommonFinalDTO searchDTO = new SearchCommonFinalDTO();
             searchDTO.setLong1(i.getGid());
             Integer count_like = userLikePostDAO.getCount(searchDTO);
@@ -69,8 +63,22 @@ public class PostBusinessImpl extends
             temp.setCountLike(count_like);
             List<UserLikePostDTO> lst_user = userLikePostDAO.getAll(searchDTO, 0, 0);
             temp.setLstUserLike(lst_user);
+            if (i.getUserId() != null) {
 
-            res.add(temp);
+                UserDTO userDTO = userDAO.getOneObjById(i.getUserId());
+                temp.setFullName(userDTO.getFullName());
+
+                if (searchDTOTmp.getString2() != null) {
+
+                    if (temp.getFullName().contains(searchDTOTmp.getString2())) {
+                        res.add(temp);
+                    }
+                } else {
+                    res.add(temp);
+                }
+
+            }
+
         }
 
         return res;

@@ -49,7 +49,10 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
             sqlCommand.append(" and ( tbl.description like :stringKeyWord  ");
             sqlCommand.append(" )   ");
         }
-
+        if (searchDTO.getLong2() != null) {
+            sqlCommand.append(" and ( tbl.userId = :userId  ");
+            sqlCommand.append(" )   ");
+        }
         sqlCommand.append(" ORDER BY tbl.createdTime DESC ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
@@ -66,6 +69,9 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
         }
+        if (searchDTO.getLong2() != null) {
+            query.setParameter("userId", searchDTO.getLong2());
+        }
         return query.list();
     }
 
@@ -81,9 +87,16 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
             sqlCommand.append(" and ( tbl.description like :stringKeyWord  ");
             sqlCommand.append(" )   ");
         }
+        if (searchDTO.getLong2() != null) {
+            sqlCommand.append(" and ( tbl.userId = :userId  ");
+            sqlCommand.append(" )   ");
+        }
         Query query = getSession().createSQLQuery(sqlCommand.toString());
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
+        }
+        if (searchDTO.getLong2() != null) {
+            query.setParameter("userId", searchDTO.getLong2());
         }
         return ((BigInteger) query.uniqueResult()).intValue();
     }
