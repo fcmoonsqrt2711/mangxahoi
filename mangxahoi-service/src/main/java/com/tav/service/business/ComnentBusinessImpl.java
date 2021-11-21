@@ -4,10 +4,12 @@ import com.tav.service.base.db.business.BaseFWBusinessImpl;
 import com.tav.service.bo.ComnentBO;
 import com.tav.service.common.Constants;
 import com.tav.service.dao.ComnentDAO;
+import com.tav.service.dao.UserDAO;
 import com.tav.service.dto.ComnentDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
+import com.tav.service.dto.UserDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -23,6 +25,8 @@ public class ComnentBusinessImpl extends
 
     @Autowired
     private ComnentDAO comnentDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @Override
     public ComnentDAO gettDAO() {
@@ -31,6 +35,13 @@ public class ComnentBusinessImpl extends
 
     public List<ComnentDTO> getAll(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
         List<ComnentDTO> lstDTO = comnentDAO.getAll(searchDTOTmp, offset, limit);
+
+        for (ComnentDTO i : lstDTO) {
+            if (i.getUserID() != null) {
+                UserDTO userDTO = userDAO.getOneObjById(i.getUserID());
+                i.setFullName(userDTO.getFullName());
+            }
+        }
         return lstDTO;
     }
 

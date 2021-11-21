@@ -70,7 +70,7 @@ public class UserBusinessImpl extends
                     System.out.println("qqqqqqqqqqqq " + i.getDateOfBirthST());
                     if (today.substring(0, 4).equals(i.getDateOfBirthST().substring(0, 4))) {
                         UserCommon temp = new UserCommon();
-                        temp.setId(i.getGid());
+                        temp.setGid(i.getGid());
                         temp.setFullName(i.getFullName());
                         int age = Integer.parseInt(today.substring(6)) - Integer.parseInt(i.getDateOfBirthST().substring(6));
 //                        System.out.println("aaaaaaaaaaaaaaa  " + age);

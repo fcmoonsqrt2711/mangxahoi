@@ -11,100 +11,100 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "ComnentDTO")
 public class ComnentDTO extends BaseFWDTOImpl<ComnentBO> {
-	private Long gid;		//Khóa tự sinh
-	private Long postID;		//
-	private Long userID;		//
-	private String fullName;		//
-	private String avatarPath;		//
-	private String content;		//
-	private Date createdTime;		//
-	private String createdTimeST;
 
-	public Long getGid(){
-		return gid;
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long postID;		//
+    private Long userID;		//
+    private String fullName;		//
+    private String avatarPath;		//
+    private String content;		//
+    private Date createdTime;		//
+    private String createdTimeST;
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    public Long getGid() {
+        return gid;
+    }
 
-	public Long getPostID(){
-		return postID;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	public void setPostID(Long postID){
-		this.postID = postID;
-	}
+    public Long getPostID() {
+        return postID;
+    }
 
-	public Long getUserID(){
-		return userID;
-	}
+    public void setPostID(Long postID) {
+        this.postID = postID;
+    }
 
-	public void setUserID(Long userID){
-		this.userID = userID;
-	}
+    public Long getUserID() {
+        return userID;
+    }
 
-	public String getFullName(){
-		return fullName;
-	}
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
 
-	public void setFullName(String fullName){
-		this.fullName = fullName;
-	}
+    public String getFullName() {
+        return fullName;
+    }
 
-	public String getAvatarPath(){
-		return avatarPath;
-	}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-	public void setAvatarPath(String avatarPath){
-		this.avatarPath = avatarPath;
-	}
+    public String getAvatarPath() {
+        return avatarPath;
+    }
 
-	public String getContent(){
-		return content;
-	}
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
 
-	public void setContent(String content){
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public Date getCreatedTime(){
-		return createdTime;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public void setCreatedTime(Date createdTime){
-		this.createdTime = createdTime;
-	}
+    public Date getCreatedTime() {
+        return createdTime;
+    }
 
-	public String getCreatedTimeST(){
-		return createdTimeST;
-	}
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
 
-	public void setCreatedTimeST(String createdTimeST){
-		this.createdTimeST = createdTimeST;
-	}
+    public String getCreatedTimeST() {
+        return createdTimeST;
+    }
 
+    public void setCreatedTimeST(String createdTimeST) {
+        this.createdTimeST = createdTimeST;
+    }
 
-	@Override
-	public ComnentBO toModel() {
-		ComnentBO comnentBO = new ComnentBO();
-		comnentBO.setGid(gid);
-		comnentBO.setPostID(postID);
-		comnentBO.setUserID(userID);
-		comnentBO.setFullName(fullName);
-		comnentBO.setAvatarPath(avatarPath);
-		comnentBO.setContent(content);
-		comnentBO.setCreatedTime(createdTime);
-		return comnentBO;
-	}
+    @Override
+    public ComnentBO toModel() {
+        ComnentBO comnentBO = new ComnentBO();
+        comnentBO.setGid(gid);
+        comnentBO.setPostID(postID);
+        comnentBO.setUserID(userID);
+        comnentBO.setFullName(fullName);
+        comnentBO.setAvatarPath(avatarPath);
+        comnentBO.setContent(content);
+        comnentBO.setCreatedTime(createdTime);
+        return comnentBO;
+    }
 
-	@Override
-	public Long getFWModelId() {
-		return getGid();
-	}
+    @Override
+    public Long getFWModelId() {
+        return getGid();
+    }
 
-	@Override
-	public String catchName() {
-		return gid.toString();
-	}
+    @Override
+    public String catchName() {
+        return gid.toString();
+    }
 }
