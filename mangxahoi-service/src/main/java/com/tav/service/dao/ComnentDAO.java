@@ -54,7 +54,7 @@ public class ComnentDAO extends BaseFWDAOImpl<ComnentBO, Long> {
             sqlCommand.append(" )   ");
         }
 
-        sqlCommand.append(" ORDER BY tbl.createdTime DESC ");
+        sqlCommand.append(" ORDER BY tbl.gid ASC ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
                 .addScalar("postID", LongType.INSTANCE)

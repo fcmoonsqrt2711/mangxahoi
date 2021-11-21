@@ -26,7 +26,10 @@ public class PostCommon {
     private Integer countCmt;		//
     private List<UserLikePostDTO> lstUserLike;		//
 
-    
+    private List<ComnentDTO> lstCmt1;		//
+
+    private List<ComnentDTO> lstCmt2;		//
+
     private String fullName;		//
     
     
@@ -116,6 +119,22 @@ public class PostCommon {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public List<ComnentDTO> getLstCmt1() {
+        return lstCmt1;
+    }
+
+    public void setLstCmt1(List<ComnentDTO> lstCmt1) {
+        this.lstCmt1 = lstCmt1;
+    }
+
+    public List<ComnentDTO> getLstCmt2() {
+        return lstCmt2;
+    }
+
+    public void setLstCmt2(List<ComnentDTO> lstCmt2) {
+        this.lstCmt2 = lstCmt2;
     }
 
 }
