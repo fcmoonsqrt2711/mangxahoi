@@ -44,6 +44,10 @@ public class ComnentDAO extends BaseFWDAOImpl<ComnentBO, Long> {
         sqlCommand.append(" FROM Comnent tbl ");
 
         sqlCommand.append(" WHERE 1=1 ");
+        if (searchDTO.getLong1() != null) {
+            sqlCommand.append(" and ( tbl.postId = :postId  ");
+            sqlCommand.append(" )   ");
+        }
         //String
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             sqlCommand.append(" and (   ");
@@ -66,6 +70,9 @@ public class ComnentDAO extends BaseFWDAOImpl<ComnentBO, Long> {
         }
         if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
             query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
+        }
+        if (searchDTO.getLong1() != null) {
+            query.setParameter("postId", searchDTO.getLong1());
         }
         return query.list();
     }
