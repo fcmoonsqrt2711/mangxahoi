@@ -89,18 +89,18 @@ public class PostBusinessImpl extends
                 UserDTO userDTO = userDAO.getOneObjById(i.getUserId());
                 temp.setFullName(userDTO.getFullName());
 
-                if (searchDTOTmp.getStringKeyWord() != null) {
-
-                    if (temp.getFullName().contains(searchDTOTmp.getStringKeyWord())) {
-                        res.add(temp);
-                    }
-                } else {
-                    res.add(temp);
-                }
+//                if (searchDTOTmp.getStringKeyWord() != null) {
+//
+//                    if (temp.getFullName().contains(searchDTOTmp.getStringKeyWord())) {
+//                        res.add(temp);
+//                    }
+//                } else {
+//                    res.add(temp);
+//                }
 
             }
 
-            
+            res.add(temp);
             
         }
 
