@@ -64,44 +64,42 @@ public class PostBusinessImpl extends
             temp.setCountLike(count_like);
             List<UserLikePostDTO> lst_user = userLikePostDAO.getAll(searchDTO, 0, 0);
             temp.setLstUserLike(lst_user);
-            
-            
+
             List<ComnentDTO> lstcmt1 = comnentDAO.getAll(searchDTO, 0, 2);
             for (ComnentDTO ii : lstcmt1) {
-            if (ii.getUserID() != null) {
-                UserDTO userDTO = userDAO.getOneObjById(ii.getUserID());
-                ii.setFullName(userDTO.getFullName());
-            }
+                if (ii.getUserID() != null) {
+                    UserDTO userDTO = userDAO.getOneObjById(ii.getUserID());
+                    ii.setFullName(userDTO.getFullName());
+                }
             }
             List<ComnentDTO> lstcmt2 = comnentDAO.getAll(searchDTO, 0, 0);
             for (ComnentDTO ii : lstcmt2) {
-            if (ii.getUserID() != null) {
-                UserDTO userDTO = userDAO.getOneObjById(ii.getUserID());
-                ii.setFullName(userDTO.getFullName());
+                if (ii.getUserID() != null) {
+                    UserDTO userDTO = userDAO.getOneObjById(ii.getUserID());
+                    ii.setFullName(userDTO.getFullName());
+                }
             }
-            }
-            
+
             temp.setLstCmt1(lstcmt1);
             temp.setLstCmt2(lstcmt2);
-            
+
             if (i.getUserId() != null) {
 
                 UserDTO userDTO = userDAO.getOneObjById(i.getUserId());
                 temp.setFullName(userDTO.getFullName());
 
-                if (searchDTOTmp.getStringKeyWord() != null) {
-
-                    if (temp.getFullName().contains(searchDTOTmp.getStringKeyWord())) {
-                        res.add(temp);
-                    }
-                } else {
-                    res.add(temp);
-                }
-
+//                if (searchDTOTmp.getStringKeyWord() != null) {
+//
+//                    if (temp.getFullName().contains(searchDTOTmp.getStringKeyWord())) {
+//                        res.add(temp);
+//                    }
+//                } else {
+//                    res.add(temp);
+//                }
             }
 
-            
-            
+            res.add(temp);
+
         }
 
         return res;

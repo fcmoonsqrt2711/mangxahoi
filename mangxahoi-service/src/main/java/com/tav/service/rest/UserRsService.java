@@ -77,7 +77,7 @@ public interface UserRsService {
 
     @POST
     @Consumes("multipart/form-data")
-    @Produces("text/html;charset=utf-8")
+    @Produces({MediaType.APPLICATION_JSON})
     @Path("/upload")
     public Response upload(@Multipart("userId") String userId,
             @Multipart("upfile") Attachment attachment);

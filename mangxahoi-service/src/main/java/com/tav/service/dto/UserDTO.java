@@ -150,13 +150,13 @@ public class UserDTO extends BaseFWDTOImpl<UserBO> {
         userBO.setPassWord(passWord);
         userBO.setFullName(fullName);
         userBO.setGender(gender);
+        userBO.setIsAvatar(isAvatar);
         userBO.setDateOfBirth(dateOfBirth);
         userBO.setPhoneNumber(phoneNumber);
         userBO.setEmail(email);
         userBO.setAddress(address);
         userBO.setAvatarPath(avatarPath);
         userBO.setIsOnline(isOnline);
-        userBO.setIsAvatar(isAvatar);
         return userBO;
     }
 

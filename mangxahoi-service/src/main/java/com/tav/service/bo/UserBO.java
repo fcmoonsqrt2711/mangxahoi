@@ -177,12 +177,12 @@ public class UserBO extends BaseFWModelImpl {
         userDTO.setGender(gender);
         userDTO.setDateOfBirth(dateOfBirth);
         userDTO.setPhoneNumber(phoneNumber);
+        userDTO.setIsAvatar(isAvatar);
         userDTO.setEmail(email);
         userDTO.setAddress(address);
         userDTO.setAvatarPath(avatarPath);
-        userDTO.setDataImg(dataImg);
+//        userDTO.setDataImg(dataImg);
         userDTO.setIsOnline(isOnline);
-        userDTO.setIsAvatar(isAvatar);
         return userDTO;
     }
 }

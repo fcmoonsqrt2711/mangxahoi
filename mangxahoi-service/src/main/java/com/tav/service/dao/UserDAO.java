@@ -71,11 +71,10 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
-        
-        
+
         sqlCommand.append("tbl.isOnline as isOnline, ");
         sqlCommand.append("tbl.isAvatar as isAvatar, ");
-        
+
         sqlCommand.append("tbl.avatarPath as avatarPath ");
 
         sqlCommand.append(" FROM User_mxh tbl ");
@@ -231,7 +230,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
             UserDTO temp = lst.get(lst.size() - 1);
 
             temp.setPassWord(dto.getPassWord());
-
+            temp.setIsAvatar(dto.getIsAvatar());
             UserBO bo = temp.toModel();
             result.setId(bo.getGid());
             try {
