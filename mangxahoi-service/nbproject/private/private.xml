@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserDAO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/MessageRsServiceImpl.java</file>
+            <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserLikePostBusiness.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/ChatBoxRsService.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/resources/datasources.properties</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserBusinessImpl.java</file>
@@ -24,6 +25,7 @@
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/MessageBusinessImpl.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/NotifyDAO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/ComnentDAO.java</file>
+            <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/ObjectCommonSearchDTO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/ComnentBO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/UserBO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/PostBusinessImpl.java</file>
