@@ -53,6 +53,9 @@ public class ChatBoxDAO extends BaseFWDAOImpl<ChatBoxBO, Long> {
             sqlCommand.append(" and ( ( tbl.userID1 =:userID1 and tbl.userID2 =:userID2 )  ");
             sqlCommand.append(" or (  tbl.userID1 =:userID2 and tbl.userID2 =:userID1 ) ) ");
         }
+        if (searchDTO.getLong3() != null) {
+            sqlCommand.append(" and  ( tbl.userID2 =:userID2 or tbl.userID1 =:userID2 )  ");
+        }
 
         sqlCommand.append(" ORDER BY tbl.gid ");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
@@ -76,6 +79,9 @@ public class ChatBoxDAO extends BaseFWDAOImpl<ChatBoxBO, Long> {
         }
         if (searchDTO.getLong2() != null) {
             query.setParameter("userID2", searchDTO.getLong2());
+        }
+        if (searchDTO.getLong3() != null) {
+            query.setParameter("userID2", searchDTO.getLong3());
         }
         return query.list();
     }

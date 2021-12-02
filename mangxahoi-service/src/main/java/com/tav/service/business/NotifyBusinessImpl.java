@@ -4,8 +4,10 @@ import com.tav.service.base.db.business.BaseFWBusinessImpl;
 import com.tav.service.bo.NotifyBO;
 import com.tav.service.common.Constants;
 import com.tav.service.dao.NotifyDAO;
+import com.tav.service.dao.PostDAO;
 import com.tav.service.dto.NotifyDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
+import com.tav.service.dto.PostDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ public class NotifyBusinessImpl extends
 
     @Autowired
     private NotifyDAO notifyDAO;
+    @Autowired
+    private PostDAO postDAO;
 
     @Override
     public NotifyDAO gettDAO() {
@@ -32,6 +36,17 @@ public class NotifyBusinessImpl extends
     public List<NotifyDTO> getAll(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
         List<NotifyDTO> lstDTO = notifyDAO.getAll(searchDTOTmp, offset, limit);
         return lstDTO;
+    }
+
+    public ServiceResult seenALL(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
+        List<NotifyDTO> lstDTO = notifyDAO.getAll(searchDTOTmp, offset, limit);
+        for (NotifyDTO i : lstDTO) {
+            i.setIsSeen(1L);
+            notifyDAO.updateObj(i);
+        }
+        ServiceResult result = new ServiceResult();
+        result.setId(lstDTO.size() * 1L);
+        return result;
     }
 
     public Integer getCount(SearchCommonFinalDTO searchDTO) {
@@ -46,6 +61,7 @@ public class NotifyBusinessImpl extends
 
     //add
     public ServiceResult addDTO(NotifyDTO notifyDTO) {
+        
         NotifyBO bo = notifyDAO.addDTO(notifyDTO);
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setId(bo.getGid());

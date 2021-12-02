@@ -11,100 +11,122 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "MessageDTO")
 public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
-	private Long gid;		//Khóa tự sinh
-	private Long chatID;		//
-	private Long userID_1;		//
-	private Long userID_2;		//
-	private Long isLike;		//
-	private String message;		//
-	private Date createdTime;		//
-	private String createdTimeST;
 
-	public Long getGid(){
-		return gid;
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long chatID;		//
+    private Long userID_1;		//
+    private Long userID_2;		//
+    private Long isLike;		//
+    private String message;		//
+    private Date createdTime;		//
+    private String createdTimeST;
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
-
-	public Long getChatID(){
-		return chatID;
-	}
-
-	public void setChatID(Long chatID){
-		this.chatID = chatID;
-	}
-
-	public Long getUserID_1(){
-		return userID_1;
-	}
-
-	public void setUserID_1(Long userID_1){
-		this.userID_1 = userID_1;
-	}
-
-	public Long getUserID_2(){
-		return userID_2;
-	}
-
-	public void setUserID_2(Long userID_2){
-		this.userID_2 = userID_2;
-	}
-        
-	public Long getIsLike(){
-		return isLike;
-	}
-
-	public void setIsLike(Long isLike){
-		this.isLike = isLike;
-	}
-
-	public String getMessage(){
-		return message;
-	}
-
-	public void setMessage(String message){
-		this.message = message;
-	}
-
-	public Date getCreatedTime(){
-		return createdTime;
-	}
-
-	public void setCreatedTime(Date createdTime){
-		this.createdTime = createdTime;
-	}
-
-	public String getCreatedTimeST(){
-		return createdTimeST;
-	}
-
-	public void setCreatedTimeST(String createdTimeST){
-		this.createdTimeST = createdTimeST;
-	}
+    private Long isSeen;		//
+    private String fullName;		//
 
 
-	@Override
-	public MessageBO toModel() {
-		MessageBO messageBO = new MessageBO();
-		messageBO.setGid(gid);
-		messageBO.setChatID(chatID);
-		messageBO.setUserID_1(userID_1);
-		messageBO.setUserID_2(userID_2);
-		messageBO.setIsLike(isLike);
-		messageBO.setMessage(message);
-		messageBO.setCreatedTime(createdTime);
-		return messageBO;
-	}
+    public Long getGid() {
+        return gid;
+    }
 
-	@Override
-	public Long getFWModelId() {
-		return getGid();
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	@Override
-	public String catchName() {
-		return gid.toString();
-	}
+    public Long getChatID() {
+        return chatID;
+    }
+
+    public void setChatID(Long chatID) {
+        this.chatID = chatID;
+    }
+
+    public Long getUserID_1() {
+        return userID_1;
+    }
+
+    public void setUserID_1(Long userID_1) {
+        this.userID_1 = userID_1;
+    }
+
+    public Long getUserID_2() {
+        return userID_2;
+    }
+
+    public void setUserID_2(Long userID_2) {
+        this.userID_2 = userID_2;
+    }
+
+    public Long getIsLike() {
+        return isLike;
+    }
+
+    public void setIsLike(Long isLike) {
+        this.isLike = isLike;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getCreatedTimeST() {
+        return createdTimeST;
+    }
+
+    public void setCreatedTimeST(String createdTimeST) {
+        this.createdTimeST = createdTimeST;
+    }
+
+    public Long getIsSeen() {
+        return isSeen;
+    }
+
+    public void setIsSeen(Long isSeen) {
+        this.isSeen = isSeen;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public MessageBO toModel() {
+        MessageBO messageBO = new MessageBO();
+        messageBO.setGid(gid);
+        messageBO.setChatID(chatID);
+        messageBO.setUserID_1(userID_1);
+        messageBO.setUserID_2(userID_2);
+        messageBO.setIsLike(isLike);
+        messageBO.setMessage(message);
+        messageBO.setCreatedTime(createdTime);
+        messageBO.setIsSeen(isSeen);
+        messageBO.setFullName(fullName);
+        return messageBO;
+    }
+
+    @Override
+    public Long getFWModelId() {
+        return getGid();
+    }
+
+    @Override
+    public String catchName() {
+        return gid.toString();
+    }
 }

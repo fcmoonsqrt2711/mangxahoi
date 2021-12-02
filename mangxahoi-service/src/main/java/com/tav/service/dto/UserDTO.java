@@ -24,7 +24,6 @@ public class UserDTO extends BaseFWDTOImpl<UserBO> {
     private String address;		//
     private String avatarPath;		//
 
-    private byte[] dataImg;		//
 
     private Long isOnline;		//
 
@@ -46,13 +45,6 @@ public class UserDTO extends BaseFWDTOImpl<UserBO> {
         this.isAvatar = isAvatar;
     }
     
-    public byte[] getDataImg() {
-        return dataImg;
-    }
-
-    public void setDataImg(byte[] dataImg) {
-        this.dataImg = dataImg;
-    }
 
     public Long getGid() {
         return gid;

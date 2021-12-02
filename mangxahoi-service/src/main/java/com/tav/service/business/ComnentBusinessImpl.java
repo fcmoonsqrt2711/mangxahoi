@@ -4,8 +4,10 @@ import com.tav.service.base.db.business.BaseFWBusinessImpl;
 import com.tav.service.bo.ComnentBO;
 import com.tav.service.common.Constants;
 import com.tav.service.dao.ComnentDAO;
+import com.tav.service.dao.NotifyDAO;
 import com.tav.service.dao.UserDAO;
 import com.tav.service.dto.ComnentDTO;
+import com.tav.service.dto.NotifyDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
@@ -27,6 +29,8 @@ public class ComnentBusinessImpl extends
     private ComnentDAO comnentDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private NotifyDAO notifyDAO;
 
     @Override
     public ComnentDAO gettDAO() {
@@ -58,6 +62,14 @@ public class ComnentBusinessImpl extends
     //add
     public ServiceResult addDTO(ComnentDTO comnentDTO) {
         ComnentBO bo = comnentDAO.addDTO(comnentDTO);
+        
+              
+        NotifyDTO notifyDTO = new NotifyDTO();
+        notifyDTO.setUserID1(comnentDTO.getUserID());
+        notifyDTO.setPostId(comnentDTO.getPostID());
+        notifyDTO.setAction(2L);
+        notifyDAO.addDTO(notifyDTO);
+        
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setId(bo.getGid());
         return serviceResult;

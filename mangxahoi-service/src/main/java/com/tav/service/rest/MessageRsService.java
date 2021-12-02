@@ -19,6 +19,14 @@ public interface MessageRsService {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAll(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
+        
+        @POST
+	@Path("/getAll_notified/{offset}/{limit}")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response getAll_notified(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
+
+        
 	@POST
 	@Path("/getCount")
 	@Consumes({MediaType.APPLICATION_JSON})

@@ -18,100 +18,125 @@ import org.hibernate.annotations.Type;
 @Entity
 @Table(name = "Message")
 public class MessageBO extends BaseFWModelImpl {
-	private Long gid;		//Khóa tự sinh
-	private Long chatID;		//
-	private Long userID_1;		//
-	private Long userID_2;		//
-	private Long isLike;		//
-	private String message;		//
-	private Date createdTime;		//
 
-	public MessageBO(){
-		setColId("gid");
-		setColName("gid");
-		setUniqueColumn(new String[]{"gid"});
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long chatID;		//
+    private Long userID_1;		//
+    private Long userID_2;		//
+    private Long isLike;		//
+    private String message;		//
+    private Date createdTime;		//
 
-	@Id
-	@GeneratedValue(generator = "sequence")
-	@GenericGenerator(name = "sequence", strategy = "sequence",
-		parameters = {
-			@Parameter(name = "sequence", value = "Message_seq")
-		}
-	)
+    private Long isSeen;		//
+    private String fullName;		//
 
-	@Column(name = "gid", length = 200)
-	public Long getGid(){
-		return gid;
-	}
+    public MessageBO() {
+        setColId("gid");
+        setColName("gid");
+        setUniqueColumn(new String[]{"gid"});
+    }
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    @Id
+    @GeneratedValue(generator = "sequence")
+    @GenericGenerator(name = "sequence", strategy = "sequence",
+            parameters = {
+                @Parameter(name = "sequence", value = "Message_seq")
+            }
+    )
 
-	@Column(name = "chatID", length = 200)
-	public Long getChatID(){
-		return chatID;
-	}
+    @Column(name = "gid", length = 200)
+    public Long getGid() {
+        return gid;
+    }
 
-	public void setChatID(Long chatID){
-		this.chatID = chatID;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	@Column(name = "userID_1", length = 20)
-	public Long getUserID_1(){
-		return userID_1;
-	}
+    @Column(name = "chatID", length = 200)
+    public Long getChatID() {
+        return chatID;
+    }
 
-	public void setUserID_1(Long userID_1){
-		this.userID_1 = userID_1;
-	}
+    public void setChatID(Long chatID) {
+        this.chatID = chatID;
+    }
 
-	@Column(name = "userID_2", length = 20)
-	public Long getUserID_2(){
-		return userID_2;
-	}
+    @Column(name = "userID_1", length = 20)
+    public Long getUserID_1() {
+        return userID_1;
+    }
 
-	public void setUserID_2(Long userID_2){
-		this.userID_2 = userID_2;
-	}
-	@Column(name = "isLike", length = 200)
-	public Long getIsLike(){
-		return isLike;
-	}
+    public void setUserID_1(Long userID_1) {
+        this.userID_1 = userID_1;
+    }
 
-	public void setIsLike(Long isLike){
-		this.isLike = isLike;
-	}
+    @Column(name = "userID_2", length = 20)
+    public Long getUserID_2() {
+        return userID_2;
+    }
 
-	@Column(name = "message", length = 500000)
-	public String getMessage(){
-		return message;
-	}
+    public void setUserID_2(Long userID_2) {
+        this.userID_2 = userID_2;
+    }
 
-	public void setMessage(String message){
-		this.message = message;
-	}
+    @Column(name = "isLike", length = 200)
+    public Long getIsLike() {
+        return isLike;
+    }
 
-	@Column(name = "createdTime", length = 500000)
-	public Date getCreatedTime(){
-		return createdTime;
-	}
+    public void setIsLike(Long isLike) {
+        this.isLike = isLike;
+    }
 
-	public void setCreatedTime(Date createdTime){
-		this.createdTime = createdTime;
-	}
+    @Column(name = "message", length = 500000)
+    public String getMessage() {
+        return message;
+    }
 
-	@Override
-	public BaseFWDTOImpl toDTO() {
-		MessageDTO messageDTO = new MessageDTO();
-		messageDTO.setGid(gid);
-		messageDTO.setChatID(chatID);
-		messageDTO.setUserID_1(userID_1);
-		messageDTO.setUserID_2(userID_2);
-		messageDTO.setIsLike(isLike);
-		messageDTO.setMessage(message);
-		messageDTO.setCreatedTime(createdTime);
-		return messageDTO;
-	}
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Column(name = "createdTime", length = 500000)
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    @Column(name = "isSeen", length = 500000)
+    public Long getIsSeen() {
+        return isSeen;
+    }
+
+    public void setIsSeen(Long isSeen) {
+        this.isSeen = isSeen;
+    }
+
+    @Column(name = "fullName", length = 500000)
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public BaseFWDTOImpl toDTO() {
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setGid(gid);
+        messageDTO.setChatID(chatID);
+        messageDTO.setUserID_1(userID_1);
+        messageDTO.setUserID_2(userID_2);
+        messageDTO.setIsLike(isLike);
+        messageDTO.setMessage(message);
+        messageDTO.setCreatedTime(createdTime);
+        messageDTO.setIsSeen(isSeen);
+        messageDTO.setFullName(fullName);
+        return messageDTO;
+    }
 }

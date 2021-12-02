@@ -18,112 +18,129 @@ import org.hibernate.annotations.Type;
 @Entity
 @Table(name = "Notify")
 public class NotifyBO extends BaseFWModelImpl {
-	private Long gid;		//Khóa tự sinh
-	private Long userID;		//
-	private String avatarFriendPath;		//
-	private String fullNameFriend;		//
-	private String action;		//
-	private String pathDetail;		//
-	private Long isSeen;		//
-	private Date notifyTime;		//
 
-	public NotifyBO(){
-		setColId("gid");
-		setColName("gid");
-		setUniqueColumn(new String[]{"gid"});
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long userID1;		//
+    private Long userID2;		//
+    
+    
+    private String avatarFriendPath;		//
+    private String fullNameFriend;		//
+    private Long action;		//
+    private String pathDetail;		//
+    private Long isSeen;		//
+    private Date createdTime;		//
+    
+    
 
-	@Id
-	@GeneratedValue(generator = "sequence")
-	@GenericGenerator(name = "sequence", strategy = "sequence",
-		parameters = {
-			@Parameter(name = "sequence", value = "Notify_seq")
-		}
-	)
+    public NotifyBO() {
+        setColId("gid");
+        setColName("gid");
+        setUniqueColumn(new String[]{"gid"});
+    }
 
-	@Column(name = "gid", length = 200)
-	public Long getGid(){
-		return gid;
-	}
+    @Id
+    @GeneratedValue(generator = "sequence")
+    @GenericGenerator(name = "sequence", strategy = "sequence",
+            parameters = {
+                @Parameter(name = "sequence", value = "Notify_seq")
+            }
+    )
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    @Column(name = "gid", length = 200)
+    public Long getGid() {
+        return gid;
+    }
 
-	@Column(name = "userID", length = 200)
-	public Long getUserID(){
-		return userID;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	public void setUserID(Long userID){
-		this.userID = userID;
-	}
+    @Column(name = "userID1", length = 200)
+    public Long getUserID1() {
+        return userID1;
+    }
 
-	@Column(name = "avatarFriendPath", length = 20)
-	public String getAvatarFriendPath(){
-		return avatarFriendPath;
-	}
+    public void setUserID1(Long userID1) {
+        this.userID1 = userID1;
+    }
+    
+    @Column(name = "userID2", length = 200)
+    public Long getUserID2() {
+        return userID2;
+    }
 
-	public void setAvatarFriendPath(String avatarFriendPath){
-		this.avatarFriendPath = avatarFriendPath;
-	}
+    public void setUserID2(Long userID2) {
+        this.userID2 = userID2;
+    }
+    
 
-	@Column(name = "fullNameFriend", length = 200)
-	public String getFullNameFriend(){
-		return fullNameFriend;
-	}
+    @Column(name = "avatarFriendPath", length = 20)
+    public String getAvatarFriendPath() {
+        return avatarFriendPath;
+    }
 
-	public void setFullNameFriend(String fullNameFriend){
-		this.fullNameFriend = fullNameFriend;
-	}
+    public void setAvatarFriendPath(String avatarFriendPath) {
+        this.avatarFriendPath = avatarFriendPath;
+    }
 
-	@Column(name = "action", length = 500000)
-	public String getAction(){
-		return action;
-	}
+    @Column(name = "fullNameFriend", length = 200)
+    public String getFullNameFriend() {
+        return fullNameFriend;
+    }
 
-	public void setAction(String action){
-		this.action = action;
-	}
+    public void setFullNameFriend(String fullNameFriend) {
+        this.fullNameFriend = fullNameFriend;
+    }
 
-	@Column(name = "pathDetail", length = 200)
-	public String getPathDetail(){
-		return pathDetail;
-	}
+    @Column(name = "action", length = 500000)
+    public Long getAction() {
+        return action;
+    }
 
-	public void setPathDetail(String pathDetail){
-		this.pathDetail = pathDetail;
-	}
+    public void setAction(Long action) {
+        this.action = action;
+    }
 
-	@Column(name = "isSeen", length = 500000)
-	public Long getIsSeen(){
-		return isSeen;
-	}
+    @Column(name = "pathDetail", length = 200)
+    public String getPathDetail() {
+        return pathDetail;
+    }
 
-	public void setIsSeen(Long isSeen){
-		this.isSeen = isSeen;
-	}
+    public void setPathDetail(String pathDetail) {
+        this.pathDetail = pathDetail;
+    }
 
-	@Column(name = "notifyTime", length = 500000)
-	public Date getNotifyTime(){
-		return notifyTime;
-	}
+    @Column(name = "isSeen", length = 500000)
+    public Long getIsSeen() {
+        return isSeen;
+    }
 
-	public void setNotifyTime(Date notifyTime){
-		this.notifyTime = notifyTime;
-	}
+    public void setIsSeen(Long isSeen) {
+        this.isSeen = isSeen;
+    }
 
-	@Override
-	public BaseFWDTOImpl toDTO() {
-		NotifyDTO notifyDTO = new NotifyDTO();
-		notifyDTO.setGid(gid);
-		notifyDTO.setUserID(userID);
-		notifyDTO.setAvatarFriendPath(avatarFriendPath);
-		notifyDTO.setFullNameFriend(fullNameFriend);
-		notifyDTO.setAction(action);
-		notifyDTO.setPathDetail(pathDetail);
-		notifyDTO.setIsSeen(isSeen);
-		notifyDTO.setNotifyTime(notifyTime);
-		return notifyDTO;
-	}
+    @Column(name = "createdTime", length = 500000)
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    @Override
+    public BaseFWDTOImpl toDTO() {
+        NotifyDTO notifyDTO = new NotifyDTO();
+        notifyDTO.setGid(gid);
+        notifyDTO.setUserID1(userID1);
+        notifyDTO.setUserID2(userID2);
+        notifyDTO.setAvatarFriendPath(avatarFriendPath);
+        notifyDTO.setFullNameFriend(fullNameFriend);
+        notifyDTO.setAction(action);
+        notifyDTO.setPathDetail(pathDetail);
+        notifyDTO.setIsSeen(isSeen);
+        notifyDTO.setCreatedTime(createdTime);
+        return notifyDTO;
+    }
 }

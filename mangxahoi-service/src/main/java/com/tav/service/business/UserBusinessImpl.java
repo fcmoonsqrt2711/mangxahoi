@@ -245,8 +245,8 @@ public class UserBusinessImpl extends
             String toEmail = userDTO.getEmail();
 //        System.out.println("aaaaaaaa" + userDTO.getEmail());
 
-            String fromEmail = "nguyenhonghue18112000@gmail.com";
-            String password = "Hue18112000";
+            String fromEmail = "longkieuck4@gmail.com";
+            String password = "long27112000";
             MailSSLSocketFactory sf = new MailSSLSocketFactory();
 
             sf.setTrustAllHosts(true);

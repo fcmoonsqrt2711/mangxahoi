@@ -266,20 +266,6 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         UserBO BO = new UserBO();
         try {
             BO = (UserBO) session1.merge(dto.toModel());
-            if (dto.getAvatarPath() != null) {
-                BufferedImage bImage = ImageIO.read(new File(dto.getAvatarPath()));
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                ImageIO.write(bImage, "jpg", bos);
-                dto.setDataImg(bos.toByteArray());
-
-                ByteArrayInputStream bis = new ByteArrayInputStream(dto.getDataImg());
-                BufferedImage bImage2 = ImageIO.read(bis);
-
-//            System.out.println("33333333333" + BO.getGid().toString());
-                ImageIO.write(bImage2, "jpg", new File("avatar" + BO.getGid().toString() + ".jpg"));
-
-                System.out.println("image created");
-            }
 
         } catch (JDBCConnectionException e) {
             log.error(e);

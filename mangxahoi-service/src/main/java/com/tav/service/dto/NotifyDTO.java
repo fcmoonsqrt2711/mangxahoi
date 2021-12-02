@@ -11,110 +11,133 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "NotifyDTO")
 public class NotifyDTO extends BaseFWDTOImpl<NotifyBO> {
-	private Long gid;		//Khóa tự sinh
-	private Long userID;		//
-	private String avatarFriendPath;		//
-	private String fullNameFriend;		//
-	private String action;		//
-	private String pathDetail;		//
-	private Long isSeen;		//
-	private Date notifyTime;		//
-	private String notifyTimeST;
 
-	public Long getGid(){
-		return gid;
-	}
+    private Long gid;		//Khóa tự sinh
+    private Long userID1;		//
+    private Long userID2;		//
 
-	public void setGid(Long gid){
-		this.gid = gid;
-	}
+    private String avatarFriendPath;		//
+    private String fullNameFriend;		//
+    private Long action;		//
+    private String pathDetail;		//
+    private Long isSeen;		//
+    private Date createdTime;		//
 
-	public Long getUserID(){
-		return userID;
-	}
+    
+    private Long postId;		//
+    
+    private String createdTimeST;
 
-	public void setUserID(Long userID){
-		this.userID = userID;
-	}
+    public Long getGid() {
+        return gid;
+    }
 
-	public String getAvatarFriendPath(){
-		return avatarFriendPath;
-	}
+    public void setGid(Long gid) {
+        this.gid = gid;
+    }
 
-	public void setAvatarFriendPath(String avatarFriendPath){
-		this.avatarFriendPath = avatarFriendPath;
-	}
+    public Long getUserID1() {
+        return userID1;
+    }
 
-	public String getFullNameFriend(){
-		return fullNameFriend;
-	}
+    public void setUserID1(Long userID1) {
+        this.userID1 = userID1;
+    }
 
-	public void setFullNameFriend(String fullNameFriend){
-		this.fullNameFriend = fullNameFriend;
-	}
+    public Long getUserID2() {
+        return userID2;
+    }
 
-	public String getAction(){
-		return action;
-	}
+    public void setUserID2(Long userID2) {
+        this.userID2 = userID2;
+    }
 
-	public void setAction(String action){
-		this.action = action;
-	}
+    public String getAvatarFriendPath() {
+        return avatarFriendPath;
+    }
 
-	public String getPathDetail(){
-		return pathDetail;
-	}
+    public void setAvatarFriendPath(String avatarFriendPath) {
+        this.avatarFriendPath = avatarFriendPath;
+    }
 
-	public void setPathDetail(String pathDetail){
-		this.pathDetail = pathDetail;
-	}
+    public String getFullNameFriend() {
+        return fullNameFriend;
+    }
 
-	public Long getIsSeen(){
-		return isSeen;
-	}
+    public void setFullNameFriend(String fullNameFriend) {
+        this.fullNameFriend = fullNameFriend;
+    }
 
-	public void setIsSeen(Long isSeen){
-		this.isSeen = isSeen;
-	}
+    public Long getAction() {
+        return action;
+    }
 
-	public Date getNotifyTime(){
-		return notifyTime;
-	}
+    public void setAction(Long action) {
+        this.action = action;
+    }
 
-	public void setNotifyTime(Date notifyTime){
-		this.notifyTime = notifyTime;
-	}
+    public String getPathDetail() {
+        return pathDetail;
+    }
 
-	public String getNotifyTimeST(){
-		return notifyTimeST;
-	}
+    public void setPathDetail(String pathDetail) {
+        this.pathDetail = pathDetail;
+    }
 
-	public void setNotifyTimeST(String notifyTimeST){
-		this.notifyTimeST = notifyTimeST;
-	}
+    public Long getIsSeen() {
+        return isSeen;
+    }
 
+    public void setIsSeen(Long isSeen) {
+        this.isSeen = isSeen;
+    }
 
-	@Override
-	public NotifyBO toModel() {
-		NotifyBO notifyBO = new NotifyBO();
-		notifyBO.setGid(gid);
-		notifyBO.setUserID(userID);
-		notifyBO.setAvatarFriendPath(avatarFriendPath);
-		notifyBO.setFullNameFriend(fullNameFriend);
-		notifyBO.setAction(action);
-		notifyBO.setPathDetail(pathDetail);
-		notifyBO.setIsSeen(isSeen);
-		notifyBO.setNotifyTime(notifyTime);
-		return notifyBO;
-	}
+    public Date getCreatedTime() {
+        return createdTime;
+    }
 
-	@Override
-	public Long getFWModelId() {
-		return getGid();
-	}
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
 
-	@Override
-	public String catchName() {
-		return gid.toString();
-	}
+    public String getCreatedTimeST() {
+        return createdTimeST;
+    }
+
+    public void setCreatedTimeST(String createdTimeST) {
+        this.createdTimeST = createdTimeST;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    @Override
+    public NotifyBO toModel() {
+        NotifyBO notifyBO = new NotifyBO();
+        notifyBO.setGid(gid);
+        notifyBO.setUserID1(userID1);
+        notifyBO.setUserID2(userID2);
+        notifyBO.setAvatarFriendPath(avatarFriendPath);
+        notifyBO.setFullNameFriend(fullNameFriend);
+        notifyBO.setAction(action);
+        notifyBO.setPathDetail(pathDetail);
+        notifyBO.setIsSeen(isSeen);
+        notifyBO.setCreatedTime(createdTime);
+        return notifyBO;
+    }
+
+    @Override
+    public Long getFWModelId() {
+        return getGid();
+    }
+
+    @Override
+    public String catchName() {
+        return gid.toString();
+    }
 }
