@@ -30,17 +30,7 @@ http://cxf.apache.org/schemas/jaxws.xsd">
                   class="com.tav.service.rest.common_processingRsServiceImpl"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>-->
-    
-    <jaxrs:server id="attachmentRsServiceRest"
-                  address="/attachmentRsServiceRest">
-        <jaxrs:providers>
-            <ref bean="jsonProvider" />
-        </jaxrs:providers>
-        <jaxrs:serviceBeans>
-            <bean id="attachmentRsServiceClass"
-                  class="com.tav.service.rest.AttachmentRsServiceImpl"/>
-        </jaxrs:serviceBeans>
-    </jaxrs:server>
+
     
     <jaxrs:server id="chatBoxRsServiceRest"
                   address="/chatBoxRsServiceRest">
@@ -64,38 +54,6 @@ http://cxf.apache.org/schemas/jaxws.xsd">
         </jaxrs:serviceBeans>
     </jaxrs:server>
     
-    <jaxrs:server id="groupRsServiceRest"
-                  address="/groupRsServiceRest">
-        <jaxrs:providers>
-            <ref bean="jsonProvider" />
-        </jaxrs:providers>
-        <jaxrs:serviceBeans>
-            <bean id="groupRsServiceClass"
-                  class="com.tav.service.rest.GroupRsServiceImpl"/>
-        </jaxrs:serviceBeans>
-    </jaxrs:server>
-    
-    <jaxrs:server id="groupAdminRsServiceRest"
-                  address="/groupAdminRsServiceRest">
-        <jaxrs:providers>
-            <ref bean="jsonProvider" />
-        </jaxrs:providers>
-        <jaxrs:serviceBeans>
-            <bean id="groupAdminRsServiceClass"
-                  class="com.tav.service.rest.GroupAdminRsServiceImpl"/>
-        </jaxrs:serviceBeans>
-    </jaxrs:server>
-    
-    <jaxrs:server id="groupMemberRsServiceRest"
-                  address="/groupMemberRsServiceRest">
-        <jaxrs:providers>
-            <ref bean="jsonProvider" />
-        </jaxrs:providers>
-        <jaxrs:serviceBeans>
-            <bean id="groupMemberRsServiceClass"
-                  class="com.tav.service.rest.GroupMemberRsServiceImpl"/>
-        </jaxrs:serviceBeans>
-    </jaxrs:server>
     
     <jaxrs:server id="messageRsServiceRest"
                   address="/messageRsServiceRest">
@@ -108,17 +66,7 @@ http://cxf.apache.org/schemas/jaxws.xsd">
         </jaxrs:serviceBeans>
     </jaxrs:server>
     
-    
-    <jaxrs:server id="messNotifyRsServiceRest"
-                  address="/messNotifyRsServiceRest">
-        <jaxrs:providers>
-            <ref bean="jsonProvider" />
-        </jaxrs:providers>
-        <jaxrs:serviceBeans>
-            <bean id="messNotifyRsServiceClass"
-                  class="com.tav.service.rest.MessNotifyRsServiceImpl"/>
-        </jaxrs:serviceBeans>
-    </jaxrs:server>
+
     
     <jaxrs:server id="notifyRsServiceRest"
                   address="/notifyRsServiceRest">
@@ -151,17 +99,7 @@ http://cxf.apache.org/schemas/jaxws.xsd">
                   class="com.tav.service.rest.UserRsServiceImpl"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
-    
-    <jaxrs:server id="userLikeCommentRsServiceRest"
-                  address="/userLikeCommentRsServiceRest">
-        <jaxrs:providers>
-            <ref bean="jsonProvider" />
-        </jaxrs:providers>
-        <jaxrs:serviceBeans>
-            <bean id="userLikeCommentRsServiceClass"
-                  class="com.tav.service.rest.UserLikeCommentRsServiceImpl"/>
-        </jaxrs:serviceBeans>
-    </jaxrs:server>
+
     
     <jaxrs:server id="userLikePostRsServiceRest"
                   address="/userLikePostRsServiceRest">
@@ -170,7 +108,7 @@ http://cxf.apache.org/schemas/jaxws.xsd">
         </jaxrs:providers>
         <jaxrs:serviceBeans>
             <bean id="userLikePostRsServiceClass"
-                              class="com.tav.service.rest.UserLikePostRsServiceImpl"/>
+                  class="com.tav.service.rest.UserLikePostRsServiceImpl"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
 </beans>

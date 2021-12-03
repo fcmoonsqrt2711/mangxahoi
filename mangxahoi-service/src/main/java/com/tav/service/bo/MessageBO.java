@@ -28,7 +28,8 @@ public class MessageBO extends BaseFWModelImpl {
     private Date createdTime;		//
 
     private Long isSeen;		//
-    private String fullName;		//
+    private String fullName1;		//
+    private String fullName2;		//
 
     public MessageBO() {
         setColId("gid");
@@ -116,13 +117,21 @@ public class MessageBO extends BaseFWModelImpl {
         this.isSeen = isSeen;
     }
 
-    @Column(name = "fullName", length = 500000)
-    public String getFullName() {
-        return fullName;
+    @Column(name = "fullName1", length = 500000)
+    public String getFullName1() {
+        return fullName1;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName1(String fullName1) {
+        this.fullName1 = fullName1;
+    }
+    @Column(name = "fullName2", length = 500000)
+    public String getFullName2() {
+        return fullName2;
+    }
+
+    public void setFullName2(String fullName2) {
+        this.fullName2 = fullName2;
     }
 
     @Override
@@ -136,7 +145,8 @@ public class MessageBO extends BaseFWModelImpl {
         messageDTO.setMessage(message);
         messageDTO.setCreatedTime(createdTime);
         messageDTO.setIsSeen(isSeen);
-        messageDTO.setFullName(fullName);
+        messageDTO.setFullName1(fullName1);
+        messageDTO.setFullName2(fullName2);
         return messageDTO;
     }
 }

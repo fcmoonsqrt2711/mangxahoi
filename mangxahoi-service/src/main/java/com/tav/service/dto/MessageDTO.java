@@ -22,7 +22,9 @@ public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
     private String createdTimeST;
 
     private Long isSeen;		//
-    private String fullName;		//
+    private String fullName1;		//
+    private String fullName2;		//
+
 
 
     public Long getGid() {
@@ -97,12 +99,20 @@ public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
         this.isSeen = isSeen;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullName1() {
+        return fullName1;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName1(String fullName1) {
+        this.fullName1 = fullName1;
+    }
+
+    public String getFullName2() {
+        return fullName2;
+    }
+
+    public void setFullName2(String fullName2) {
+        this.fullName2 = fullName2;
     }
 
     @Override
@@ -116,7 +126,8 @@ public class MessageDTO extends BaseFWDTOImpl<MessageBO> {
         messageBO.setMessage(message);
         messageBO.setCreatedTime(createdTime);
         messageBO.setIsSeen(isSeen);
-        messageBO.setFullName(fullName);
+        messageBO.setFullName1(fullName1);
+        messageBO.setFullName2(fullName2);
         return messageBO;
     }
 

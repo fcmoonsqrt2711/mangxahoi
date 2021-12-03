@@ -5,11 +5,13 @@ import com.tav.service.bo.MessageBO;
 import com.tav.service.common.Constants;
 import com.tav.service.dao.ChatBoxDAO;
 import com.tav.service.dao.MessageDAO;
+import com.tav.service.dao.UserDAO;
 import com.tav.service.dto.ChatBoxDTO;
 import com.tav.service.dto.MessageDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
+import com.tav.service.dto.UserDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -28,6 +30,9 @@ public class MessageBusinessImpl extends
     @Autowired
     private ChatBoxDAO chatBoxDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @Override
     public MessageDAO gettDAO() {
         return messageDAO;
@@ -35,6 +40,18 @@ public class MessageBusinessImpl extends
 
     public List<MessageDTO> getAll(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
         List<MessageDTO> lstDTO = messageDAO.getAll(searchDTOTmp, offset, limit);
+        for (MessageDTO i : lstDTO) {
+            if (i.getUserID_1() != null) {
+
+                UserDTO tmp = userDAO.getOneObjById(i.getUserID_1());
+                i.setFullName1(tmp.getFullName());
+            }
+            if (i.getUserID_2() != null) {
+                UserDTO tmp2 = userDAO.getOneObjById(i.getUserID_2());
+                i.setFullName2(tmp2.getFullName());
+            }
+        }
+
         return lstDTO;
     }
 
