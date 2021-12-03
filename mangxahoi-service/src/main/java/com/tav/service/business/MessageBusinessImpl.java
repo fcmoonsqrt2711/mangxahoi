@@ -61,12 +61,24 @@ public class MessageBusinessImpl extends
         searchDTOTmp_chatBox.setLong3(searchDTOTmp.getLong2());
         List<ChatBoxDTO> lst_chatbox = chatBoxDAO.getAll(searchDTOTmp_chatBox, 0, 0); // tat ca chatID cua USERID2
 
+//        List<MessageDTO> lstDTO = messageDAO.getAll(searchDTOTmp, offset, limit);
         List<MessageDTO> res = new ArrayList<>();
         for (ChatBoxDTO i : lst_chatbox) {
             MessageDTO temp = new MessageDTO();
             searchDTOTmp.setLong1(i.getGid());
             List<MessageDTO> lst_tmp = messageDAO.getAll_notified(searchDTOTmp, offset, limit); // 
             temp = lst_tmp.get(lst_tmp.size() - 1); // tin nhan moi nhat
+            if (temp.getUserID_1() != null) {
+                System.out.println("getUserID_1getUserID_1 : " + temp.getUserID_1());
+                UserDTO tmp = userDAO.getOneObjById(temp.getUserID_1());
+                temp.setFullName1(tmp.getFullName());
+            }
+            if (temp.getUserID_2() != null) {
+                System.out.println("getUserID_2getUserID_2 : " + temp.getUserID_2());
+                UserDTO tmp2 = userDAO.getOneObjById(temp.getUserID_2());
+                temp.setFullName2(tmp2.getFullName());
+            }
+
             res.add(temp);
         }
 
