@@ -13,6 +13,8 @@ import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
 import com.tav.service.dto.UserDTO;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +83,14 @@ public class MessageBusinessImpl extends
 
             res.add(temp);
         }
+
+        Collections.sort(res, new Comparator<MessageDTO>() {
+            @Override
+            public int compare(MessageDTO o1, MessageDTO o2) {
+                return (int) (o1.getGid() - o2.getGid());
+
+            }
+        });
 
         return res;
     }
