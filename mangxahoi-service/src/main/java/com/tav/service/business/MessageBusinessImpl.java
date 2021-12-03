@@ -93,7 +93,7 @@ public class MessageBusinessImpl extends
         Collections.sort(res, new Comparator<MessageDTO>() {
             @Override
             public int compare(MessageDTO o1, MessageDTO o2) {
-                return (int) (o1.getGid() - o2.getGid());
+                return (int) (o2.getGid() - o1.getGid());
 
             }
         });
