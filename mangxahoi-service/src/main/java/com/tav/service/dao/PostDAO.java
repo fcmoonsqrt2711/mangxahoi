@@ -20,6 +20,7 @@ import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.JDBCConnectionException;
 import org.hibernate.transform.Transformers;
+import org.hibernate.type.DateType;
 import org.hibernate.type.LongType;
 import org.hibernate.type.DoubleType;
 import org.hibernate.type.StringType;
@@ -36,6 +37,8 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         sqlCommand.append("tbl.gid as gid, ");
         sqlCommand.append("tbl.userId as userId, ");
         sqlCommand.append("tbl.groupId as groupId, ");
+        sqlCommand.append("tbl.createdTime as createdTime, ");
+
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST, ");
         sqlCommand.append("tbl.isAvatar as isAvatar, ");
         sqlCommand.append("tbl.description as description ");
@@ -58,6 +61,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
                 .addScalar("gid", LongType.INSTANCE)
                 .addScalar("userId", LongType.INSTANCE)
                 .addScalar("groupId", LongType.INSTANCE)
+                .addScalar("createdTime", DateType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .addScalar("description", StringType.INSTANCE)
                 .addScalar("isAvatar", LongType.INSTANCE)
@@ -108,6 +112,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
         sqlCommand.append("tbl.gid as gid, ");
         sqlCommand.append("tbl.userId as userId, ");
         sqlCommand.append("tbl.groupId as groupId, ");
+        sqlCommand.append("tbl.createdTime as createdTime, ");
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST, ");
         sqlCommand.append("tbl.isAvatar as isAvatar, ");
         sqlCommand.append("tbl.description as description ");
@@ -118,6 +123,7 @@ public class PostDAO extends BaseFWDAOImpl<PostBO, Long> {
                 .addScalar("gid", LongType.INSTANCE)
                 .addScalar("userId", LongType.INSTANCE)
                 .addScalar("groupId", LongType.INSTANCE)
+                .addScalar("createdTime", DateType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .addScalar("description", StringType.INSTANCE)
                 .addScalar("isAvatar", LongType.INSTANCE)
