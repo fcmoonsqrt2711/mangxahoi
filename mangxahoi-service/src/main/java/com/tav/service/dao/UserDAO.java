@@ -71,11 +71,10 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         sqlCommand.append("tbl.phoneNumber as phoneNumber, ");
         sqlCommand.append("tbl.email as email, ");
         sqlCommand.append("tbl.address as address, ");
-        
-        
+
         sqlCommand.append("tbl.isOnline as isOnline, ");
         sqlCommand.append("tbl.isAvatar as isAvatar, ");
-        
+
         sqlCommand.append("tbl.avatarPath as avatarPath ");
 
         sqlCommand.append(" FROM User_mxh tbl ");
@@ -231,7 +230,7 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
             UserDTO temp = lst.get(lst.size() - 1);
 
             temp.setPassWord(dto.getPassWord());
-
+            temp.setIsAvatar(dto.getIsAvatar());
             UserBO bo = temp.toModel();
             result.setId(bo.getGid());
             try {
@@ -267,20 +266,6 @@ public class UserDAO extends BaseFWDAOImpl<UserBO, Long> {
         UserBO BO = new UserBO();
         try {
             BO = (UserBO) session1.merge(dto.toModel());
-            if (dto.getAvatarPath() != null) {
-                BufferedImage bImage = ImageIO.read(new File(dto.getAvatarPath()));
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                ImageIO.write(bImage, "jpg", bos);
-                dto.setDataImg(bos.toByteArray());
-
-                ByteArrayInputStream bis = new ByteArrayInputStream(dto.getDataImg());
-                BufferedImage bImage2 = ImageIO.read(bis);
-
-//            System.out.println("33333333333" + BO.getGid().toString());
-                ImageIO.write(bImage2, "jpg", new File("avatar" + BO.getGid().toString() + ".jpg"));
-
-                System.out.println("image created");
-            }
 
         } catch (JDBCConnectionException e) {
             log.error(e);

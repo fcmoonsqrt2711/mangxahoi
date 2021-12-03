@@ -167,19 +167,17 @@ public class UserRsServiceImpl implements UserRsService {
     public Response upload(@Multipart("userId") String userId,
             @Multipart("upfile") Attachment attachment) {
 
-        ServiceResult result = null;
-        OutputStream outStream = null;
-        File targetFile = new File("avatar.txt");
+        ServiceResult result = new ServiceResult();
 
         if (userId != null) {
 
             Long user_Id = Long.parseLong(userId);
-            System.out.println("user_Id  : " + user_Id);
 
             String filename = attachment.getContentDisposition().getParameter("filename");
             String[] parts = filename.split("\\.");
 
             UserDTO userDTO = userBusinessImpl.getOneObjById(user_Id);
+            System.out.println("user_Id  : " + userDTO.getGid());
             userDTO.setIsAvatar(1L);
             try {
                 result = userBusinessImpl.updateObj(userDTO);

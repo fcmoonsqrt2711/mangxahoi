@@ -39,6 +39,10 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
         sqlCommand.append("tbl.userID_2 as userID_2, ");
         sqlCommand.append("tbl.isLike as isLike, ");
         sqlCommand.append("tbl.message as message, ");
+
+        sqlCommand.append("tbl.isSeen as isSeen, ");
+        sqlCommand.append("tbl.fullName as fullName, ");
+
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
 
         sqlCommand.append(" FROM Message tbl ");
@@ -61,6 +65,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
                 .addScalar("userID_2", LongType.INSTANCE)
                 .addScalar("isLike", LongType.INSTANCE)
                 .addScalar("message", StringType.INSTANCE)
+                .addScalar("isSeen", LongType.INSTANCE)
+                .addScalar("fullName", StringType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(MessageDTO.class))
                 .setFirstResult(offset);
@@ -112,6 +118,9 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
         sqlCommand.append("tbl.userID_2 as userID_2, ");
         sqlCommand.append("tbl.isLike as isLike, ");
         sqlCommand.append("tbl.message as message, ");
+
+        sqlCommand.append("tbl.isSeen as isSeen, ");
+        sqlCommand.append("tbl.fullName as fullName, ");
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
 
         sqlCommand.append(" FROM Message tbl ");
@@ -123,6 +132,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
                 .addScalar("userID_2", LongType.INSTANCE)
                 .addScalar("isLike", LongType.INSTANCE)
                 .addScalar("message", StringType.INSTANCE)
+                .addScalar("isSeen", LongType.INSTANCE)
+                .addScalar("fullName", StringType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(MessageDTO.class));
         query.setParameter("gid", id);
@@ -155,9 +166,14 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
     @Transactional
     public ServiceResult updateObj(MessageDTO dto) {
         ServiceResult result = new ServiceResult();
-        MessageBO bo = dto.toModel();
+        Long gid = dto.getGid();
+        
+        
+        MessageDTO get_one = getOneObjById(gid);
+        get_one.setIsSeen(dto.getIsSeen());
+//        MessageBO bo = get_one.toModel();
         try {
-            getSession().merge(bo);
+            getSession().merge(get_one.toModel());
         } catch (ConstraintViolationException e) {
             log.error(e);
             result.setError(e.getMessage());
@@ -179,9 +195,10 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
         ServiceResult result = new ServiceResult();
         Date now = new Date();
         dto.setCreatedTime(now);
-        
+
         dto.setCreatedTimeST(DateUtil.getCurrentDateTime());
-        
+        dto.setIsSeen(0L);
+
         Session session1 = getSession();
         MessageBO BO = new MessageBO();
         try {
@@ -200,5 +217,58 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
             result.setError(e.getMessage());
         }
         return BO;
+    }
+
+    public List<MessageDTO> getAll_notified(SearchCommonFinalDTO searchDTO, Integer offset, Integer limit) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        StringBuilder sqlCommand = new StringBuilder();
+        sqlCommand.append(" SELECT ");
+        sqlCommand.append("tbl.gid as gid, ");
+        sqlCommand.append("tbl.chatID as chatID, ");
+        sqlCommand.append("tbl.userID_1 as userID_1, ");
+        sqlCommand.append("tbl.userID_2 as userID_2, ");
+        sqlCommand.append("tbl.isLike as isLike, ");
+        sqlCommand.append("tbl.message as message, ");
+
+        sqlCommand.append("tbl.isSeen as isSeen, ");
+        sqlCommand.append("tbl.fullName as fullName, ");
+
+        sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
+
+        sqlCommand.append(" FROM Message tbl ");
+
+        sqlCommand.append(" WHERE 1=1 ");
+        //String
+        if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
+            sqlCommand.append(" and (   ");
+            sqlCommand.append(" )   ");
+        }
+        if (searchDTO.getLong1() != null) {
+            sqlCommand.append(" and ( tbl.chatID = :chatID   ");
+            sqlCommand.append(" )   ");
+        }
+        sqlCommand.append(" ORDER BY tbl.gid ");
+        Query query = getSession().createSQLQuery(sqlCommand.toString())
+                .addScalar("gid", LongType.INSTANCE)
+                .addScalar("chatID", LongType.INSTANCE)
+                .addScalar("userID_1", LongType.INSTANCE)
+                .addScalar("userID_2", LongType.INSTANCE)
+                .addScalar("isLike", LongType.INSTANCE)
+                .addScalar("message", StringType.INSTANCE)
+                .addScalar("isSeen", LongType.INSTANCE)
+                .addScalar("fullName", StringType.INSTANCE)
+                .addScalar("createdTimeST", StringType.INSTANCE)
+                .setResultTransformer(Transformers.aliasToBean(MessageDTO.class))
+                .setFirstResult(offset);
+        if (limit != null && limit != 0) {
+            query.setMaxResults(limit);
+        }
+        if (!StringUtil.isEmpty(searchDTO.getStringKeyWord())) {
+            query.setParameter("stringKeyWord", "%" + searchDTO.getStringKeyWord() + "%");
+        }
+        if (searchDTO.getLong1() != null) {
+            query.setParameter("chatID", searchDTO.getLong1());
+        }
+        return query.list();
     }
 }

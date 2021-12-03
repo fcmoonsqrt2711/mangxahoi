@@ -34,8 +34,6 @@ public class UserBO extends BaseFWModelImpl {
     private Long isOnline;		//
     private Long isAvatar;		//
     
-    
-    private byte[] dataImg;		//
 
     public UserBO() {
         setColId("gid");
@@ -141,14 +139,6 @@ public class UserBO extends BaseFWModelImpl {
         this.avatarPath = avatarPath;
     }
 
-    @Column(name = "dataImg", length = 500000)
-    public byte[] getDataImg() {
-        return dataImg;
-    }
-
-    public void setDataImg(byte[] dataImg) {
-        this.dataImg = dataImg;
-    }
 
     @Column(name = "isOnline", length = 500000)
     public Long getIsOnline() {
@@ -177,12 +167,11 @@ public class UserBO extends BaseFWModelImpl {
         userDTO.setGender(gender);
         userDTO.setDateOfBirth(dateOfBirth);
         userDTO.setPhoneNumber(phoneNumber);
+        userDTO.setIsAvatar(isAvatar);
         userDTO.setEmail(email);
         userDTO.setAddress(address);
         userDTO.setAvatarPath(avatarPath);
-        userDTO.setDataImg(dataImg);
         userDTO.setIsOnline(isOnline);
-        userDTO.setIsAvatar(isAvatar);
         return userDTO;
     }
 }

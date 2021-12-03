@@ -3,7 +3,9 @@ package com.tav.service.business;
 import com.tav.service.base.db.business.BaseFWBusinessImpl;
 import com.tav.service.bo.MessageBO;
 import com.tav.service.common.Constants;
+import com.tav.service.dao.ChatBoxDAO;
 import com.tav.service.dao.MessageDAO;
+import com.tav.service.dto.ChatBoxDTO;
 import com.tav.service.dto.MessageDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
@@ -23,6 +25,8 @@ public class MessageBusinessImpl extends
 
     @Autowired
     private MessageDAO messageDAO;
+    @Autowired
+    private ChatBoxDAO chatBoxDAO;
 
     @Override
     public MessageDAO gettDAO() {
@@ -32,6 +36,27 @@ public class MessageBusinessImpl extends
     public List<MessageDTO> getAll(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
         List<MessageDTO> lstDTO = messageDAO.getAll(searchDTOTmp, offset, limit);
         return lstDTO;
+    }
+
+    public List<MessageDTO> getAll_notified(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
+
+        SearchCommonFinalDTO searchDTOTmp_chatBox = new SearchCommonFinalDTO();
+        searchDTOTmp_chatBox.setLong3(searchDTOTmp.getLong2());
+        List<ChatBoxDTO> lst_chatbox = chatBoxDAO.getAll(searchDTOTmp_chatBox, 0, 0); // tat ca chatID cua USERID2
+        System.out.println("aaaaaaaaad"+lst_chatbox.size());
+        List<MessageDTO> res = new ArrayList<>();
+        for (ChatBoxDTO i : lst_chatbox) {
+            MessageDTO temp = new MessageDTO();
+            searchDTOTmp.setLong1(i.getGid());
+            List<MessageDTO> lst_tmp = messageDAO.getAll_notified(searchDTOTmp, offset, limit); // 
+            if(lst_tmp.size() > 0){
+                temp = lst_tmp.get(lst_tmp.size() - 1); // tin nhan moi nhat
+                res.add(temp);
+            }
+            
+        }
+
+        return res;
     }
 
     public Integer getCount(SearchCommonFinalDTO searchDTO) {
@@ -55,8 +80,7 @@ public class MessageBusinessImpl extends
     //update
     public ServiceResult updateObj(MessageDTO messageDTO) {
         ServiceResult result;
-        MessageBO bo = messageDAO.addDTO(messageDTO);
-        result = new ServiceResult();
+        result = messageDAO.updateObj(messageDTO);
         return result;
     }
 

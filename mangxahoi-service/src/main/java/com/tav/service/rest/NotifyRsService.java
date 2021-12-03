@@ -13,39 +13,48 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 public interface NotifyRsService {
-	@POST
-	@Path("/getAll/{offset}/{limit}")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getAll(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
-	@POST
-	@Path("/getCount")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getCount(SearchCommonFinalDTO searchDTO);
+    @POST
+    @Path("/getAll/{offset}/{limit}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAll(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
-	@GET
-	@Path("/getOneById/{id}")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getOneById(@PathParam("id") Long id);
+    
+    @POST
+    @Path("/seenALL/{offset}/{limit}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response seenALL(SearchCommonFinalDTO searchDTO, @PathParam("offset") Integer offset, @PathParam("limit") Integer limit);
 
-	@POST
-	@Path("/deleteList/")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response deleteList(ObjectCommonSearchDTO searchDTO);
+    
+    @POST
+    @Path("/getCount")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getCount(SearchCommonFinalDTO searchDTO);
 
-	@POST
-	@Path("/updateBO/")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response updateObj(NotifyDTO notifyDTO);
+    @GET
+    @Path("/getOneById/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getOneById(@PathParam("id") Long id);
 
-	@POST
-	@Path("/addDTO/")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response addDTO(NotifyDTO notifyDTO);
+    @POST
+    @Path("/deleteList/")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response deleteList(ObjectCommonSearchDTO searchDTO);
+
+    @POST
+    @Path("/updateBO/")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response updateObj(NotifyDTO notifyDTO);
+
+    @POST
+    @Path("/addDTO/")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response addDTO(NotifyDTO notifyDTO);
 }
