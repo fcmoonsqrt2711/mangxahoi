@@ -5,11 +5,13 @@ import com.tav.service.bo.NotifyBO;
 import com.tav.service.common.Constants;
 import com.tav.service.dao.NotifyDAO;
 import com.tav.service.dao.PostDAO;
+import com.tav.service.dao.UserDAO;
 import com.tav.service.dto.NotifyDTO;
 import com.tav.service.dto.ObjectCommonSearchDTO;
 import com.tav.service.dto.PostDTO;
 import com.tav.service.dto.SearchCommonFinalDTO;
 import com.tav.service.dto.ServiceResult;
+import com.tav.service.dto.UserDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -27,6 +29,8 @@ public class NotifyBusinessImpl extends
     private NotifyDAO notifyDAO;
     @Autowired
     private PostDAO postDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @Override
     public NotifyDAO gettDAO() {
@@ -35,6 +39,12 @@ public class NotifyBusinessImpl extends
 
     public List<NotifyDTO> getAll(SearchCommonFinalDTO searchDTOTmp, Integer offset, Integer limit) {
         List<NotifyDTO> lstDTO = notifyDAO.getAll(searchDTOTmp, offset, limit);
+        for (NotifyDTO i : lstDTO) {
+            UserDTO tmp = userDAO.getOneObjById(i.getUserID1());
+            i.setFullNameFriend(tmp.getFullName());
+            notifyDAO.updateObj(i);
+        }
+        
         return lstDTO;
     }
 

@@ -41,7 +41,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
         sqlCommand.append("tbl.message as message, ");
 
         sqlCommand.append("tbl.isSeen as isSeen, ");
-        sqlCommand.append("tbl.fullName as fullName, ");
+        sqlCommand.append("tbl.fullName1 as fullName1, ");
+        sqlCommand.append("tbl.fullName2 as fullName2, ");
 
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
 
@@ -66,7 +67,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
                 .addScalar("isLike", LongType.INSTANCE)
                 .addScalar("message", StringType.INSTANCE)
                 .addScalar("isSeen", LongType.INSTANCE)
-                .addScalar("fullName", StringType.INSTANCE)
+                .addScalar("fullName1", StringType.INSTANCE)
+                .addScalar("fullName2", StringType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(MessageDTO.class))
                 .setFirstResult(offset);
@@ -120,7 +122,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
         sqlCommand.append("tbl.message as message, ");
 
         sqlCommand.append("tbl.isSeen as isSeen, ");
-        sqlCommand.append("tbl.fullName as fullName, ");
+        sqlCommand.append("tbl.fullName1 as fullName1, ");
+        sqlCommand.append("tbl.fullName2 as fullName2, ");
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
 
         sqlCommand.append(" FROM Message tbl ");
@@ -133,7 +136,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
                 .addScalar("isLike", LongType.INSTANCE)
                 .addScalar("message", StringType.INSTANCE)
                 .addScalar("isSeen", LongType.INSTANCE)
-                .addScalar("fullName", StringType.INSTANCE)
+                .addScalar("fullName1", StringType.INSTANCE)
+                .addScalar("fullName2", StringType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(MessageDTO.class));
         query.setParameter("gid", id);
@@ -231,7 +235,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
         sqlCommand.append("tbl.message as message, ");
 
         sqlCommand.append("tbl.isSeen as isSeen, ");
-        sqlCommand.append("tbl.fullName as fullName, ");
+        sqlCommand.append("tbl.fullName1 as fullName1, ");
+        sqlCommand.append("tbl.fullName2 as fullName2, ");
 
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
 
@@ -256,7 +261,8 @@ public class MessageDAO extends BaseFWDAOImpl<MessageBO, Long> {
                 .addScalar("isLike", LongType.INSTANCE)
                 .addScalar("message", StringType.INSTANCE)
                 .addScalar("isSeen", LongType.INSTANCE)
-                .addScalar("fullName", StringType.INSTANCE)
+                .addScalar("fullName1", StringType.INSTANCE)
+                .addScalar("fullName2", StringType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(MessageDTO.class))
                 .setFirstResult(offset);
