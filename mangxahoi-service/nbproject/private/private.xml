@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/MessageRsService.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/UserDAO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/MessageRsServiceImpl.java</file>
@@ -25,7 +24,6 @@
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/MessageDAO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/MessageBO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserLikePostRsServiceImpl.java</file>
-            <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/GroupAdminBusiness.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/MessageBusinessImpl.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/NotifyDAO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/ComnentDAO.java</file>
@@ -47,32 +45,7 @@
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/ComnentDTO.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsService.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/ComnentBusiness.java</file>
-            <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/AttachmentBusinessImpl.java</file>
             <file>file:/C:/Users/longk/OneDrive/Desktop/MXH/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/PostDAO.java</file>
-=======
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/UserBO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/NotifyDTO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/web/WEB-INF/beans-service.xml</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/MessageBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/ComnentBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/UserDTO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/ComnentDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/MessageDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/PostRsServiceImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/MessageBO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserLikePostBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/UserRsServiceImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/NotifyRsServiceImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/PostBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/NotifyRsService.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/NotifyDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dto/MessageDTO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/UserBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/bo/NotifyBO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/business/NotifyBusinessImpl.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/dao/PostDAO.java</file>
-            <file>file:/F:/laptrinhnangcao/SERVICE/mangxahoi/mangxahoi-service/src/main/java/com/tav/service/rest/MessageRsServiceImpl.java</file>
->>>>>>> 794e876d71583f6e322a403a0db7ec8c9beb94ab
         </group>
     </open-files>
 </project-private>
