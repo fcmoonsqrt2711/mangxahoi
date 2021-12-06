@@ -65,13 +65,13 @@ public class PostBusinessImpl extends
             List<UserLikePostDTO> lst_user = userLikePostDAO.getAll(searchDTO, 0, 0);
             temp.setLstUserLike(lst_user);
 
-            List<ComnentDTO> lstcmt1 = comnentDAO.getAll(searchDTO, 0, 2);
-            for (ComnentDTO ii : lstcmt1) {
-                if (ii.getUserID() != null) {
-                    UserDTO userDTO = userDAO.getOneObjById(ii.getUserID());
-                    ii.setFullName(userDTO.getFullName());
-                }
-            }
+            List<ComnentDTO> lstcmt1 = new ArrayList<>();
+//            for (ComnentDTO ii : lstcmt1) {
+//                if (ii.getUserID() != null) {
+//                    UserDTO userDTO = userDAO.getOneObjById(ii.getUserID());
+//                    ii.setFullName(userDTO.getFullName());
+//                }
+//            }
             List<ComnentDTO> lstcmt2 = comnentDAO.getAll(searchDTO, 0, 0);
             for (ComnentDTO ii : lstcmt2) {
                 if (ii.getUserID() != null) {
@@ -79,14 +79,21 @@ public class PostBusinessImpl extends
                     ii.setFullName(userDTO.getFullName());
                 }
             }
-
+            if (lstcmt2.size() > 1 && lstcmt2.size() < 2) {
+                lstcmt1.add(lstcmt2.get(lstcmt2.size() - 1));
+            } else if (lstcmt2.size() > 2) {
+                lstcmt1.add(lstcmt2.get(lstcmt2.size() - 2));
+                lstcmt1.add(lstcmt2.get(lstcmt2.size() - 1));
+            }
             temp.setLstCmt1(lstcmt1);
             temp.setLstCmt2(lstcmt2);
 
             if (i.getUserId() != null) {
 
                 UserDTO userDTO = userDAO.getOneObjById(i.getUserId());
-                temp.setFullName(userDTO.getFullName());
+                if (userDTO.getFullName() != null) {
+                    temp.setFullName(userDTO.getFullName());
+                }
 
             }
 
