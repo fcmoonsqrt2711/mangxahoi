@@ -50,6 +50,7 @@ public class NotifyDAO extends BaseFWDAOImpl<NotifyBO, Long> {
         sqlCommand.append("tbl.action as action, ");
         sqlCommand.append("tbl.pathDetail as pathDetail, ");
         sqlCommand.append("tbl.isSeen as isSeen, ");
+        sqlCommand.append("tbl.createdTime as createdTime, ");
         sqlCommand.append("to_char(tbl.createdTime, 'DD/MM/YYYY') as createdTimeST ");
 
         sqlCommand.append(" FROM Notify tbl ");
@@ -76,6 +77,7 @@ public class NotifyDAO extends BaseFWDAOImpl<NotifyBO, Long> {
                 .addScalar("action", LongType.INSTANCE)
                 .addScalar("pathDetail", StringType.INSTANCE)
                 .addScalar("isSeen", LongType.INSTANCE)
+                .addScalar("createdTime", DateType.INSTANCE)
                 .addScalar("createdTimeST", StringType.INSTANCE)
                 .setResultTransformer(Transformers.aliasToBean(NotifyDTO.class))
                 .setFirstResult(offset);

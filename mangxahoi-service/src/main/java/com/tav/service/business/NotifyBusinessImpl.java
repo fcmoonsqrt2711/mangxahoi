@@ -81,8 +81,7 @@ public class NotifyBusinessImpl extends
     //update
     public ServiceResult updateObj(NotifyDTO notifyDTO) {
         ServiceResult result;
-        NotifyBO bo = notifyDAO.addDTO(notifyDTO);
-        result = new ServiceResult();
+        result = notifyDAO.updateObj(notifyDTO);
         return result;
     }
 
