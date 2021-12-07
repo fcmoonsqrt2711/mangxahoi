@@ -67,7 +67,7 @@ public class NotifyDAO extends BaseFWDAOImpl<NotifyBO, Long> {
             sqlCommand.append(" )   ");
         }
 
-        sqlCommand.append(" ORDER BY tbl.gid ");
+        sqlCommand.append(" ORDER BY tbl.gid DESC");
         Query query = getSession().createSQLQuery(sqlCommand.toString())
                 .addScalar("gid", LongType.INSTANCE)
                 .addScalar("userID1", LongType.INSTANCE)
